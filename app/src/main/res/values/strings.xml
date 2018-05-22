@@ -1,0 +1,71 @@
+<resources>
+    <string name="app_name">Agmarks</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_login">Login</string>
+    <string name="forgot">Forgot Password?</string>
+    <string name="title">Select Type</string>
+    <string-array name="items_state">
+        <item>Andhra Pradesh</item>
+        <item>Telangana</item>
+    </string-array>
+    <string-array name="items_ap_districts">
+        <item> Anantapur</item>
+        <item> Chittoor</item>
+        <item> East Godavari</item>
+        <item> Guntur</item>
+        <item> Krishna</item>
+        <item> Kurnool</item>
+        <item> Prakasam</item>
+        <item> Nellore</item>
+        <item> Srikakulam</item>
+        <item> Visakhapatnam</item>
+        <item> Vizianagaram</item>
+        <item> West Godavari</item>
+        <item> Kadapa</item>
+    </string-array>
+    <string-array name="items_tn_districts">
+        <item> Adilabad</item>
+        <item> Komram Bheem district</item>
+        <item> Bhadradri</item>
+        <item> Jayashankar</item>
+        <item> Gadwal</item>
+        <item> Hyderabad</item>
+        <item> Jagtial</item>
+        <item> Jangaon</item>
+        <item> Kamareddy</item>
+        <item> Karimnagar</item>
+        <item> Khammam</item>
+        <item> Mahabubabad</item>
+        <item> Mahbubnagar</item>
+        <item> Mancherial</item>
+        <item> Medak</item>
+        <item> Medchal</item>
+        <item> Nalgonda</item>
+        <item> Nagarkurnool</item>
+        <item> Nirmal</item>
+        <item> Nizamabad</item>
+        <item> Ranga Reddy</item>
+        <item> Peddapalli</item>
+        <item> Rajanna</item>
+        <item> Sangareddy</item>
+        <item> Siddipet</item>
+        <item> Suryapet</item>
+        <item> Vikarabad</item>
+        <item> Wanaparthy</item>
+        <item> Warangal</item>
+        <item> Yadadri</item>
+    </string-array>
+
+    <array name="tab_name">
+        <item>Home</item>
+        <item>Search</item>
+        <item>Share</item>
+        <item>News</item>
+        <item>Profile</item>
+    </array>
+    <string name="telugu">తెలుగు</string>
+    <string name="tamil">தமிழ்</string>
+    <string name="hindi">हिंदी</string>
+    <string name="kannada">kannada</string>
+</resources>

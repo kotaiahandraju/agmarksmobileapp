@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You are already registered as FARMER and PROCESSOR. Would you like to continue?"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editT5"
+            android:layout_marginTop="37dp"
+            android:id="@+id/continueW"
+            android:background="@drawable/button"
+            android:text="Continue"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editT5"
+            android:layout_marginTop="37dp"
+            android:id="@+id/cancelW"
+            android:background="@drawable/button"
+            android:text="Cancel"
+            android:textColor="#fff"
+            android:layout_gravity="center"
+            />
+    </LinearLayout>
+</FrameLayout>

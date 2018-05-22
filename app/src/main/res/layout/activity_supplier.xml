@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/relative2"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:scrollbarThumbVertical="@drawable/scrollbars"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView1"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="2dp"
+                    android:text="Company" />
+
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/radioGroup1"
+                    android:layout_below="@+id/radioGroup1"
+                    android:layout_marginLeft="20dp"
+                    android:text="Individual" />
+
+
+            </RadioGroup>
+
+            <LinearLayout
+                android:id="@+id/linearl1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/nameS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/profile_icon"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Name"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/surnameS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/profile_icon"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Surname"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/companyS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/user"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Company Name"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/addressS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="Address"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <EditText
+                    android:id="@+id/pincodeS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="Pincode"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/villageS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="Village"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/mandalS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="Mandal"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearl8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/districtS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="District"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/stateS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:hint="State"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/emailS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/email"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Email"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/mobileS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/call"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="Mobile"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/dobS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/date"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="DOB/Year of incorporation"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <EditText
+                    android:id="@+id/gstS"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1.4"
+                    android:background="@drawable/edit_text"
+                    android:drawableLeft="@drawable/create"
+                    android:drawableTint="@color/colorPrimary"
+                    android:hint="GST number(optional)"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/stateF"
+                android:layout_marginTop="10dp"
+                android:id="@+id/linear1"
+                android:weightSum="1">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="Bio"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerBS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="Botanical"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerBOS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/linear2"
+                android:layout_below="@id/linear1"
+                android:layout_marginTop="20dp"
+                android:weightSum="1">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="FarmMachinery"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerFMS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="Inorganic"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerIS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/stateF"
+                android:layout_marginTop="20dp"
+                android:id="@+id/linear3"
+                android:weightSum="1">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_marginLeft="15dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="Bio"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerOS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/checkcircle"
+                        android:text="Botanical"
+                        android:textColor="@color/blackColor"
+                        android:gravity="left"/>
+
+                    <io.apptik.widget.multiselectspinner.MultiSelectSpinner
+                        android:id="@+id/spinnerSS"
+                        android:layout_width="160dp"
+                        android:background="@drawable/custom_spinner_background"
+                        android:layout_height="50dp"
+                        android:spinnerMode="dropdown"
+                        app:choiceDialogTheme="@style/AnotherCustomAlertDialogTheme"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/submitS"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:background="@drawable/button"
+                android:text="Submit"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
+</FrameLayout>
