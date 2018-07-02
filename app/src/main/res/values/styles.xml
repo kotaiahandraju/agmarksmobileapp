@@ -5,16 +5,24 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+        <item name="colorAccent">@color/orange</item>
 
+    </style>
+    <style name="PinEnterStyle" >
+
+        <item name="android:maxLength">1</item>
+        <item name="android:inputType">number</item>
+        <item name="android:password">true</item>
+        <item name="android:textColorHint">@color/blue</item>
+        <item name="android:textSize">1dp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
     <style name="AppTheme.NoActionBar">
-
         <item name="windowActionBar">false</item>
-
         <item name="windowNoTitle">true</item>
-
     </style>
+
 
     <style parent="ThemeOverlay.AppCompat.Dark.ActionBar" name="AppTheme.AppBarOverlay"/>
 
@@ -36,6 +44,9 @@
         <item name="tabGravity">fill</item>
         <item name="tabMode">fixed</item>
     </style>
+
+    <!-- Base application theme. -->
+
 
     <style parent="@android:style/Theme.Dialog" name="AlertDialogCustom">
 
@@ -87,5 +98,28 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="MyMaterialTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
 
+
+    <style parent="ThemeOverlay.AppCompat" name="AppTheme.PopupOverlay.Dark"/>
+
+
+    <style parent="ThemeOverlay.AppCompat" name="AppTheme.PopupOverlay.Black">
+
+    <item name="android:colorBackground">@color/blackTheme_colorBackground</item>
+
+</style>
+
+
+    <style parent="Theme.AppCompat.NoActionBar" name="SplashTheme">
+
+    <item name="android:windowBackground">@drawable/splash</item>
+
+</style>
 </resources>

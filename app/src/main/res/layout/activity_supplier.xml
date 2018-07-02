@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg">
+    android:background="@drawable/bgn">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,6 +17,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:scrollbarThumbVertical="@drawable/scrollbars"
         android:scrollbars="vertical">
 
@@ -34,25 +35,77 @@
                 android:layout_below="@+id/textView1"
                 android:layout_centerHorizontal="true"
                 android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radioButton1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="Company" />
-
-
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/radioGroup1"
                     android:layout_below="@+id/radioGroup1"
-                    android:layout_marginLeft="20dp"
-                    android:text="Individual" />
+                    android:layout_marginLeft="10dp"
+                    android:text="Individual"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+                <RadioButton
+                    android:id="@+id/radioButton1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Unit Distributor"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight=".5"
+                    android:text="Central Distributor"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="5dp"
+                    android:buttonTint="@color/orange"/>
 
 
             </RadioGroup>
+            <LinearLayout
+                android:id="@+id/linearUnit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                >
+
+
+                <EditText
+                    android:id="@+id/etUnit"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edit_text"
+                    android:digits=" 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:hint="Unit Code"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:drawableRight="@drawable/star1"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+                <EditText
+                    android:id="@+id/etMain"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/edit_text"
+                    android:inputType="number"
+                    android:hint="Main Code"
+                    android:maxLength="10"
+                    android:drawableRight="@drawable/star1"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/blackColor" />
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/linearl1"
@@ -71,10 +124,11 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:hint="Name"
+                    android:drawableLeft="@drawable/name"
                     android:imeOptions="actionNext"
+                    android:drawableRight="@drawable/star1"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -97,9 +151,10 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Surname"
+                    android:drawableLeft="@drawable/name"
+                    android:drawableRight="@drawable/star1"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -123,12 +178,12 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/user"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Company Name"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableLeft="@drawable/user"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -150,6 +205,7 @@
                     android:background="@drawable/edit_text"
                     android:hint="Address"
                     android:imeOptions="actionNext"
+                    android:drawableRight="@drawable/star1"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -172,7 +228,10 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:digits="0123456789"
+                    android:maxLength="6"
                     android:inputType="number"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -197,6 +256,8 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Village"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -221,6 +282,8 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Mandal"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -288,8 +351,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/email"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Email"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
@@ -312,9 +373,10 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/call"
+                    android:drawableLeft="@drawable/mobile"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="Mobile"
+                    android:digits="0123456789"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -335,8 +397,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
+                    android:cursorVisible="false"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/date"
+                    android:drawableLeft="@drawable/dob"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="DOB/Year of incorporation"
                     android:imeOptions="actionNext"
@@ -360,11 +423,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/create"
+                    android:drawableLeft="@drawable/gst"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="GST number(optional)"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
+                    android:maxLength="15"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
@@ -386,9 +451,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Bio"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -409,9 +473,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Botanical"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -443,9 +506,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="FarmMachinery"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -466,9 +528,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Inorganic"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -499,9 +560,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
-                        android:text="Bio"
-                        android:textColor="@color/blackColor"
+                        android:text="Organic"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -522,9 +582,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
-                        android:text="Botanical"
-                        android:textColor="@color/blackColor"
+                        android:text="Seed"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -543,11 +602,12 @@
             <Button
                 android:id="@+id/submitS"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:layout_gravity="center"
                 android:background="@drawable/button"
                 android:text="Submit"
+                android:layout_marginBottom="10dp"
                 android:textColor="#ffffff" />
 
         </LinearLayout>

@@ -6,42 +6,53 @@
     android:layout_gravity="center">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="250dp"
                 android:layout_gravity="center"
                 android:background="@drawable/bg"
                 android:gravity="center"
                 android:orientation="vertical"
-                android:padding="10dp" >
+                 >
 
 
                <TextView
                    android:layout_width="wrap_content"
                    android:layout_height="wrap_content"
+                   android:text="you are"
+                   android:layout_marginBottom="30dp"
+                   android:layout_gravity="center"
+                   android:textAlignment="center"
+                   android:textStyle="bold"
                    android:id="@+id/textAlert"
                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/editT5"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/continueP"
                     android:background="@drawable/button"
                     android:text="Continue"
                     android:textColor="#fff"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
                     />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/editT5"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/cancelP"
                     android:background="@drawable/button"
                     android:text="Cancel"
+                    android:layout_marginLeft="20dp"
                     android:textColor="#fff"
+                    android:layout_marginBottom="10dp"
                     android:layout_gravity="center"
                     />
+                </LinearLayout>
             </LinearLayout>
         </FrameLayout>

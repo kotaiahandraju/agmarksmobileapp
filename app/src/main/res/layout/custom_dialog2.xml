@@ -1,60 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center">
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="250dp"
-            android:backgroundTint="@android:color/transparent"
-            android:padding="15dp" >
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog2">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/bg"
                 android:orientation="vertical"
                 android:padding="10dp" >
 
-
-                <EditText
-                    android:id="@+id/mobileDialogF"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_weight="1.4"
-                    android:background="@drawable/edit_text"
-                    android:hint="Mobile Number"
-                    android:maxLength="10"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:paddingLeft="10dp"
-                    android:singleLine="true"
-                    android:textColor="#000" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    >
+                    <com.hbb20.CountryCodePicker
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        app:ccp_countryPreference="US,IN,NZ"
+                        android:id="@+id/countrycode"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="40dp"
+                        app:ccp_defaultNameCode="IN"/>
+                    <EditText
+                        android:id="@+id/mobileDialogF"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_text"
+                        android:hint="Mobile Number"
+                        android:maxLength="10"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginLeft="10dp"
+                        android:inputType="number"
+                        android:digits="0123456789"
+                        android:imeOptions="actionNext"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textColor="#000" />
+                </LinearLayout>
+
 
                 <EditText
                     android:id="@+id/pinDialogF"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_width="200dp"
+                    android:layout_height="40dp"
                     android:layout_alignLeft="@+id/editT4"
                     android:layout_alignStart="@+id/editT4"
                     android:layout_below="@+id/editT4"
                     android:layout_marginRight="10dp"
-                    android:layout_marginTop="17dp"
-                    android:layout_weight="1.4"
+                    android:layout_marginTop="10dp"
                     android:maxLength="6"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:layout_gravity="center"
                     android:imeOptions="actionNext"
                     android:inputType="number"
+                    android:layout_marginLeft="10dp"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="#000" />
@@ -63,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/editT5"
-                    android:layout_marginTop="37dp"
+                    android:layout_marginTop="20dp"
                     android:id="@+id/btnDialogF"
                     android:background="@drawable/button"
                     android:text="Submit"
@@ -71,14 +80,15 @@
                     android:layout_gravity="center"
                     />
             </LinearLayout>
-        </FrameLayout>
-
         <ImageView
-            android:layout_width="35dp"
-            android:layout_height="35dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right|top"
             android:id="@+id/close_dialog"
-            android:src="@drawable/icons8_cancel_50"
-            android:background="@android:color/transparent"/>
-    </FrameLayout>
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/icons8_cancel_50"
+            android:backgroundTint="@color/orange"
+            />
+
 </FrameLayout>

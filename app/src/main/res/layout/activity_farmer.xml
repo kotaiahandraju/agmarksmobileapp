@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg">
+    android:background="@drawable/bgn">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -27,6 +27,16 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="0dp"
             android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:text="   Farmer"
+                android:padding="2dp"
+                android:textColor="@color/white"
+                android:background="@drawable/imge"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,6 +44,8 @@
                 android:layout_marginTop="5dp"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
+
 
                 <EditText
                     android:id="@+id/nameF"
@@ -43,15 +55,20 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Name"
+                    android:drawableLeft="@drawable/name"
+                    android:textCursorDrawable="@null"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:inputType="textPersonName"
                     android:gravity="left|center"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:textColor="@color/blackColor" />
+                    android:drawableRight="@drawable/star1"
+                    android:textColor="@color/blackColor" >
+                    <requestFocus/>
+                </EditText>
+
             </LinearLayout>
 
             <LinearLayout
@@ -69,14 +86,16 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Surname"
+                    android:drawableLeft="@drawable/name"
+                    android:textCursorDrawable="@null"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:inputType="textPersonName"
                     android:gravity="left|center"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -95,13 +114,14 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/date"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="DOB"
-                    android:inputType="date"
+                    android:drawableLeft="@drawable/dob"
                     android:imeOptions="actionNext"
-                    android:paddingLeft="10dp"
+                    android:paddingLeft="5dp"
                     android:singleLine="true"
+                    android:cursorVisible="false"
+                    android:textCursorDrawable="@null"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
             <LinearLayout
@@ -118,14 +138,15 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
-                    android:maxLength="10"
+                    android:maxLength="15"
+                    android:digits="0123456789"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/call"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableLeft="@drawable/mobile"
                     android:hint="Mobile"
                     android:inputType="phone"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
+                    android:drawableTint="@color/colorPrimary"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
@@ -143,13 +164,13 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
-                    android:inputType="phone"
-                    android:maxLength="14"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:digits="0123456789"
                     android:background="@drawable/edit_text"
                     android:hint="Aadhar Number"
                     android:imeOptions="actionNext"
-                    android:drawableLeft="@drawable/content"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableLeft="@drawable/aadhar"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -170,6 +191,7 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:digits="0123456789"
                     android:maxLength="6"
                     android:inputType="number"
                     android:imeOptions="actionNext"
@@ -215,10 +237,12 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Village"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
-                    android:textColor="@color/blackColor" />
+                    android:textColor="@color/blackColor"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -237,9 +261,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Mandal"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
             <LinearLayout
@@ -304,9 +330,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Crop"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -327,9 +352,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Vegetables"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -361,9 +385,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="AnimalHusbandry"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -384,9 +407,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Dairy(Milk)"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -403,7 +425,7 @@
                 <Button
                     android:id="@+id/submitF"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:background="@drawable/button"

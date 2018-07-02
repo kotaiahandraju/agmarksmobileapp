@@ -1,0 +1,121 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/txtMarket"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textColor="#000"
+        android:textSize="10sp"
+        />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtCommodity"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/txtVariety"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtUnitPrice"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtYardMax"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtModalPrice"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtMxpp"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtMsp"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+
+
+
+
+</LinearLayout>
+

@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="example.com.agmarks">
+    package="agmark.com.agmarks">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
-
+<supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo"
@@ -14,7 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoadingScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +34,8 @@
             android:name=".DashboardActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-
+<activity android:name=".FarmerDashboard"
+    android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

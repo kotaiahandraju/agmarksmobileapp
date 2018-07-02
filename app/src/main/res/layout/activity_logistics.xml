@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgn"
     >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -33,14 +33,18 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
                 android:layout_centerHorizontal="true"
+                android:weightSum="1"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="Company" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight=".5"
+                    android:text="Company"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
 
 
                 <RadioButton
@@ -49,8 +53,10 @@
                     android:layout_alignLeft="@+id/radioGroup1"
                     android:layout_below="@+id/radioGroup1"
                     android:layout_marginLeft="20dp"
-                    android:text="Individual" />
-
+                    android:text="Individual"
+                    android:layout_weight=".5"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
 
             </RadioGroup>
 
@@ -62,7 +68,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <EditText
                     android:id="@+id/nameL"
                     android:layout_width="match_parent"
@@ -71,9 +76,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Name"
+                    android:drawableLeft="@drawable/name"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -88,7 +93,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <EditText
                     android:id="@+id/surnameL"
                     android:layout_width="match_parent"
@@ -97,9 +101,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Surname"
+                    android:drawableLeft="@drawable/name"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -114,7 +118,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <EditText
                     android:id="@+id/companyL"
                     android:layout_width="match_parent"
@@ -123,11 +126,11 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/user"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Company Name"
                     android:imeOptions="actionNext"
+                    android:drawableLeft="@drawable/user"
                     android:paddingLeft="10dp"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
@@ -138,7 +141,6 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-
                 <EditText
                     android:id="@+id/emailL"
                     android:layout_width="match_parent"
@@ -147,9 +149,8 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/email"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Email"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -172,8 +173,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:digits="0123456789"
+                    android:maxLength="6"
                     android:inputType="number"
                     android:imeOptions="actionNext"
+                    android:drawableRight="@drawable/star1"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -196,6 +200,7 @@
                     android:background="@drawable/edit_text"
                     android:hint="Address"
                     android:imeOptions="actionNext"
+                    android:drawableRight="@drawable/star1"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -221,8 +226,10 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Village"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
+                    android:drawableRight="@drawable/star1"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
@@ -245,9 +252,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Mandal"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -313,9 +322,10 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/call"
+                    android:drawableLeft="@drawable/mobile"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="Mobile"
+                    android:digits="0123456789"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -336,8 +346,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
+                    android:cursorVisible="false"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/date"
+                    android:drawableLeft="@drawable/dob"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="DOB/Year of incorporation"
                     android:imeOptions="actionNext"
@@ -382,7 +393,10 @@
                     android:hint="Capacity of vehicle"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
+                    android:inputType="number"
                     android:singleLine="true"
+                    android:digits="0123456789"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
                 <Spinner
                     android:id="@+id/spinnerUL"
@@ -400,15 +414,13 @@
                 <Button
                     android:id="@+id/submitL"
                     android:layout_width="150dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:layout_gravity="center"
                     android:background="@drawable/button"
                     android:text="Submit"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:textColor="#ffffff" />
-
-
 
         </LinearLayout>
     </ScrollView>

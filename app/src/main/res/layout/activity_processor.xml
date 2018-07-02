@@ -3,13 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg">
+    android:background="@drawable/bgn">
 
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/relative1"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="   Processor"
+        android:padding="2dp"
+        android:textColor="@color/white"
+        android:background="@drawable/imge"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -18,6 +28,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:scrollbarThumbVertical="@drawable/scrollbars"
         android:scrollbars="vertical">
 
@@ -25,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="18dp"
             android:orientation="vertical">
 
             <RadioGroup
@@ -43,8 +54,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
                     android:layout_weight=".5"
+                    android:textColor="@color/white"
                     android:text="Company"
-                    android:buttonTint="@color/colorPrimary"/>
+                    android:buttonTint="@color/orange"/>
 
 
                 <RadioButton
@@ -52,10 +64,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/radioGroup1"
                     android:layout_below="@+id/radioGroup1"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="100dp"
                     android:text="Individual"
                     android:layout_weight=".5"
-                    android:buttonTint="@color/colorPrimary"/>
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
 
 
             </RadioGroup>
@@ -77,9 +90,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Name"
+                    android:drawableLeft="@drawable/name"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:inputType="textPersonName"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
@@ -101,12 +114,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_marginLeft="10dp"
+                    android:drawableLeft="@drawable/name"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Surname"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:inputType="textPersonName"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
@@ -132,11 +145,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:drawableLeft="@drawable/user"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Company Name"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -157,6 +170,7 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Address"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -180,6 +194,9 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:digits="0123456789"
+                    android:drawableRight="@drawable/star1"
+                    android:maxLength="6"
                     android:inputType="number"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
@@ -205,6 +222,8 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Village"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -229,6 +248,8 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Mandal"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:drawableRight="@drawable/star1"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -296,8 +317,6 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/email"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:imeOptions="actionNext"
@@ -321,9 +340,10 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/call"
+                    android:drawableLeft="@drawable/mobile"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="Mobile"
+                    android:digits="0123456789"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -344,9 +364,9 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
-                    android:inputType="date"
+                    android:cursorVisible="false"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/date"
+                    android:drawableLeft="@drawable/dob"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="DOB/Year of incorporation"
                     android:imeOptions="actionNext"
@@ -370,11 +390,13 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/create"
+                    android:drawableLeft="@drawable/gst"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="GST number(optional)"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
+                    android:maxLength="15"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
@@ -387,10 +409,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@drawable/checkcircle"
                     android:text="Raw Materials"
                     android:layout_marginLeft="15dp"
-                    android:textColor="@color/blackColor"
+                    android:textColor="@color/white"
                     android:gravity="left"/>
 
                 <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -408,9 +429,91 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:weightSum="2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Finished Products"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/white"
+                    android:gravity="left"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp">
 
+                    <CheckBox
+                        android:id="@+id/checkBox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:buttonTint="@color/colorPrimary"
+                         />
+
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox1"
+                        android:text="CheckBox"
+                        android:visibility="gone"
+                        android:layout_marginTop="3dp"
+                        android:textSize="15sp"
+                        android:layout_centerHorizontal="true"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    <CheckBox
+                        android:id="@+id/checkBox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_below="@id/checkBox1"
+                        android:buttonTint="@color/colorPrimary"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox2"
+                        android:text="CheckBox"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@id/textView1"
+                        android:textSize="15sp"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    <CheckBox
+                        android:id="@+id/checkBox3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_below="@id/checkBox2"
+                        android:buttonTint="@color/colorPrimary"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox3"
+                        android:text="CheckBox"
+                        android:visibility="gone"
+                        android:layout_marginTop="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/textView2"
+                        android:textSize="15sp"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
                 <EditText
                     android:id="@+id/finproP"
                     android:layout_width="200dp"
@@ -420,6 +523,7 @@
                     android:background="@drawable/edit_text"
                     android:hint="Finished Products"
                     android:imeOptions="actionNext"
+                    android:maxLength="50"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
                 <Button
@@ -429,6 +533,7 @@
                     android:layout_marginRight="30dp"
                     android:text="Add"
                     />
+                </LinearLayout>
             </LinearLayout>
 
 
@@ -436,37 +541,120 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:weightSum="2">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/checkcircle"
+                    android:text="Packaging"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="@color/blackColor"
+                    android:gravity="left"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp">
 
-                <EditText
-                    android:id="@+id/packingP"
-                    android:layout_width="200dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/edit_text"
-                    android:hint="Packaging"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:textColor="@color/blackColor" />
-                <Button
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:id="@+id/btn_packageR"
-                    android:layout_marginRight="30dp"
-                    android:text="Add"
-                    />
+                    <CheckBox
+                        android:id="@+id/checkBox4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:buttonTint="@color/colorPrimary"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox4"
+                        android:text="CheckBox"
+                        android:visibility="gone"
+                        android:layout_marginTop="3dp"
+                        android:textSize="15sp"
+                        android:layout_centerHorizontal="true"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    <CheckBox
+                        android:id="@+id/checkBox5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_below="@id/checkBox4"
+                        android:buttonTint="@color/colorPrimary"
+                        />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox5"
+                        android:text="CheckBox"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        android:layout_marginTop="15dp"
+                        android:layout_below="@id/textView4"
+                        android:textSize="15sp"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+                    <CheckBox
+                        android:id="@+id/checkBox6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_below="@id/checkBox5"
+                        android:buttonTint="@color/colorPrimary"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/checkBox6"
+                        android:text="CheckBox"
+                        android:visibility="gone"
+                        android:layout_marginTop="12dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_below="@+id/textView5"
+                        android:textSize="15sp"
+                        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:id="@+id/packingP"
+                        android:layout_width="200dp"
+                        android:layout_height="50dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/edit_text"
+                        android:hint="Packaging"
+                        android:maxLength="50"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="@color/blackColor" />
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:id="@+id/btn_packageR"
+                        android:layout_marginRight="30dp"
+                        android:text="Add"
+                        />
+                </LinearLayout>
             </LinearLayout>
-
-
 
             <Button
                 android:id="@+id/submitP"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
                 android:background="@drawable/button"
                 android:text="Submit"
                 android:textColor="#ffffff" />

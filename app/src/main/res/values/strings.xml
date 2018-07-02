@@ -5,6 +5,14 @@
     <string name="action_login">Login</string>
     <string name="forgot">Forgot Password?</string>
     <string name="title">Select Type</string>
+    <string name="dialogText">Crop Name, have you received your order? If yes click Confirm to continue</string>
+    <string-array name="input">
+        <item>Select Input</item>
+    </string-array>
+    <string-array name="distance">
+        <item>50</item>
+    </string-array>
+
     <string-array name="items_state">
         <item>Andhra Pradesh</item>
         <item>Telangana</item>
@@ -68,4 +76,7 @@
     <string name="tamil">தமிழ்</string>
     <string name="hindi">हिंदी</string>
     <string name="kannada">kannada</string>
+
+
+
 </resources>

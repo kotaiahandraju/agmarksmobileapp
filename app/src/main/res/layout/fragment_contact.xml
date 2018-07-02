@@ -1,19 +1,155 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bgn"
     android:orientation="vertical"
-    android:gravity="center">
-
-
+    >
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="25sp"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:text="GET IN TOUCH"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="75dp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cell_shape1"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/office"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="18dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08645 - 380800"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/mobi1"
+                    android:layout_marginTop="25dp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08645 - 380801"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/mobi2"
+                    android:layout_marginTop="3dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
 
-</LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="215dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/cell_shape1"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/phone"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="18dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+91 - 9851 222 888"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="25dp"
+                    android:id="@+id/mobi3"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+91 - 9851 222 999"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/mobi4"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/cell_shape1"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginLeft="15dp"
+                android:src="@drawable/mail"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="info@agmarks.com"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/mail"
+                android:layout_marginTop="25dp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/cell_shape1"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/place"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="18dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Andhra Pradesh"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="25dp"
+                    android:textColor="@color/white"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mangalagiri,Guntur"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/dialogText"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:textColor="@color/black"
+    android:padding="5dp"
+    android:layout_marginRight="5dp"
+    android:id="@+id/txt_text"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:padding="5dp"
+        android:weightSum="1">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_confirm"
+            android:background="#045FB4"
+            android:textColor="#fff"
+            android:layout_weight=".5"
+            android:text="confirm"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_back"
+            android:textColor="#fff"
+            android:layout_marginLeft="5dp"
+            android:background="@color/orange"
+            android:layout_weight=".5"
+            android:text="back"/>
+    </LinearLayout>
+</LinearLayout>

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/bg">
+    android:background="@drawable/bgn">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,6 +17,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:scrollbarThumbVertical="@drawable/scrollbars"
         android:scrollbars="vertical">
 
@@ -33,21 +34,31 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textView1"
                 android:layout_centerHorizontal="true"
+                android:weightSum="1"
                 android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/radioButton1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:text="Company" />
+                    android:layout_marginLeft="15dp"
+                    android:layout_weight=".5"
+                    android:text="Company"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+
+
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/radioGroup1"
                     android:layout_below="@+id/radioGroup1"
                     android:layout_marginLeft="20dp"
-                    android:text="Individual" />
+                    android:text="Individual"
+                    android:layout_weight=".5"
+                    android:textColor="@color/white"
+                    android:buttonTint="@color/orange"/>
+
 
             </RadioGroup>
 
@@ -68,9 +79,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableLeft="@drawable/name"
                     android:hint="Name"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -94,9 +105,9 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/profile_icon"
-                    android:drawableTint="@color/colorPrimary"
+                    android:drawableLeft="@drawable/name"
                     android:hint="Surname"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -121,8 +132,8 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:drawableLeft="@drawable/user"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Company Name"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -149,6 +160,7 @@
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -169,11 +181,13 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Pincode"
+                    android:digits="0123456789"
                     android:maxLength="6"
                     android:inputType="number"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -195,9 +209,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Village"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -219,9 +235,11 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:hint="Mandal"
+                    android:digits=" abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
 
@@ -287,7 +305,6 @@
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
                     android:drawableLeft="@drawable/email"
-                    android:drawableTint="@color/colorPrimary"
                     android:hint="Email"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
@@ -310,9 +327,10 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/call"
+                    android:drawableLeft="@drawable/mobile"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="Mobile"
+                    android:digits="0123456789"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
@@ -333,12 +351,12 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
+                    android:cursorVisible="false"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/date"
+                    android:drawableLeft="@drawable/dob"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="DOB/Year of incorporation"
                     android:imeOptions="actionNext"
-                    android:inputType="date"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
                     android:textColor="@color/blackColor" />
@@ -359,12 +377,14 @@
                     android:layout_marginRight="10dp"
                     android:layout_weight="1.4"
                     android:background="@drawable/edit_text"
-                    android:drawableLeft="@drawable/create"
+                    android:drawableLeft="@drawable/gst"
                     android:drawableTint="@color/colorPrimary"
                     android:hint="GST number(optional)"
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:maxLength="15"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                     android:textColor="@color/blackColor" />
             </LinearLayout>
             <LinearLayout
@@ -384,9 +404,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Crop"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -407,9 +426,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Vegetables"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -441,9 +459,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="AnimalHusbandry"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -464,9 +481,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/checkcircle"
                         android:text="Dairy(Milk)"
-                        android:textColor="@color/blackColor"
+                        android:textColor="@color/white"
                         android:gravity="left"/>
 
                     <io.apptik.widget.multiselectspinner.MultiSelectSpinner
@@ -500,6 +516,7 @@
                     android:imeOptions="actionNext"
                     android:paddingLeft="10dp"
                     android:singleLine="true"
+                    android:drawableRight="@drawable/star1"
                     android:textColor="@color/blackColor" />
                 <Spinner
                     android:id="@+id/spinnerUW"
@@ -513,11 +530,12 @@
             <Button
                 android:id="@+id/submitW"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"
                 android:background="@drawable/button"
                 android:text="Submit"
+                android:layout_marginBottom="10dp"
                 android:textColor="#ffffff" />
 
         </LinearLayout>

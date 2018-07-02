@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/tab_icon"
         android:layout_width="30dp"
+        android:paddingLeft="5dp"
         android:layout_height="30dp"/>
 
     <TextView
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tab_icon"
         android:textSize="10dp"
+        android:textAlignment="center"
         android:textColor="#000"
         android:text="Language" />
 </RelativeLayout>

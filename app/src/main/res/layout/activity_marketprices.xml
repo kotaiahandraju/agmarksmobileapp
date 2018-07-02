@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LoginPageActivity"
-    android:background="@drawable/bg"
+    android:id="@+id/frame"
+    android:background="@drawable/bgn"
     android:orientation="vertical"
     android:scrollbarAlwaysDrawVerticalTrack="true">
     <LinearLayout
@@ -42,7 +43,7 @@
         android:layout_width="180dp"
         android:layout_height="80dp"
         android:id="@+id/img_comm"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="65dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/comm" />
@@ -75,7 +76,7 @@
         android:layout_alignLeft="@+id/img_animal"
         android:layout_alignStart="@+id/img_animal"
         android:layout_below="@+id/img_animal"
-        android:src="@drawable/diary" />
+        android:src="@drawable/dairy" />
 </RelativeLayout>
 
 </FrameLayout>

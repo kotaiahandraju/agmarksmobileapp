@@ -1,0 +1,81 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textColor="#000"
+        android:textSize="10sp"
+        />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtAddress"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/txtContact"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtCapacity"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtSUnit"
+        android:layout_width="80dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+
+
+    <View
+        android:layout_width="0.5dp"
+        android:layout_height="35dp"
+        android:background="@color/gray" />
+    <TextView
+        android:id="@+id/txtDistance"
+        android:layout_width="70dp"
+        android:layout_height="30dp"
+        android:textColor="#000"
+        android:textAlignment="center"
+        android:layout_marginLeft="5dp"
+        android:textSize="10sp" />
+
+   </LinearLayout>
+

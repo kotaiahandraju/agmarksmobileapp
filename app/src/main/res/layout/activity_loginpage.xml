@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".LoginPageActivity"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgn"
     android:orientation="vertical"
     android:scrollbarAlwaysDrawVerticalTrack="true">
 
@@ -37,9 +37,14 @@
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/person"
                     android:singleLine="true"
-                    android:hint="User Name"
+                    android:drawableTint="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:hint="Mobile Number"
+                    android:maxLength="10"
+                    android:digits="0123456789"
                     android:id="@+id/username"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -52,7 +57,11 @@
                     android:layout_marginTop="16dp"
                     android:singleLine="true"
                     android:drawableLeft="@drawable/lock"
-                    android:hint="Password"
+                    android:hint="4 Digit Pin"
+                    android:maxLength="4"
+                    android:digits="0123456789"
+                    android:drawableTint="@color/colorPrimary"
+                    android:backgroundTint="@color/colorPrimary"
                     android:inputType="numberPassword"
                     android:id="@+id/password"
                      />
@@ -75,8 +84,8 @@
                     android:paddingTop="5dp"
                     android:layout_marginLeft="145dp"
                     android:layout_marginTop="2dp"
-                    android:id="@+id/forgotPswd"
-                    android:text="Forgot Password?"
+                    android:id="@+id/forgotPin"
+                    android:text="Forgot Pin?"
                     android:textColor="#000" />
             </RelativeLayout>
 

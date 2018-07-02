@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     tools:context=".RegistrationActivity"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgn"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"

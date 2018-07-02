@@ -4,25 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="0dp"
-    android:background="@drawable/bg"
+    android:background="@drawable/bgn"
     android:layout_width="match_parent"
-    android:layout_height="450dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Guntur"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:layout_marginTop="5dp"
-        android:textColor="#000"
+    <Spinner
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:id="@+id/disSpinnerV"
+        android:background="@drawable/custom_spinner_background"
+        android:layout_gravity="center"
+        android:spinnerMode="dropdown"
+        android:layout_toRightOf="@+id/classSpinner"
         />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/white" />
 
 
     <LinearLayout
@@ -38,7 +38,7 @@
             android:id="@+id/text_1"
             android:textSize="18dp"
             android:gravity="center"
-            android:textColor="#000"
+            android:textColor="@color/white"
             android:layout_weight=".65"
             android:text="Market"/>
 
@@ -48,7 +48,7 @@
             android:id="@+id/text_2"
             android:textSize="18dp"
             android:gravity="center"
-            android:textColor="#000"
+            android:textColor="@color/white"
             android:layout_weight="0.3"
             android:text="Vegetables"/>
 
@@ -101,7 +101,7 @@
     <!--</LinearLayout>-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
@@ -110,7 +110,7 @@
             android:layout_width="150dp"
             android:layout_marginLeft="5dp"
             android:divider="@null"
-            android:layout_height="wrap_content">
+            android:layout_height="165dp">
         </ListView>
         <ListView
             android:id="@+id/list2"
@@ -121,7 +121,15 @@
 
         </ListView>
 
+
     </LinearLayout>
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:id="@+id/back_icon"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_gravity="right"
+        android:src="@drawable/backicon"/>
 
 </LinearLayout>
 
