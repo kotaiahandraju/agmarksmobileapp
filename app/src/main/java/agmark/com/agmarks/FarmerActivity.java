@@ -396,7 +396,6 @@ public class FarmerActivity extends Fragment {
                 sendDetailsToServer0();
                 getrawdatafromserver();
 
-
             }
         });
 
