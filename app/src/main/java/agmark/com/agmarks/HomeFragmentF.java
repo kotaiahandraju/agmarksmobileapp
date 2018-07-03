@@ -19,6 +19,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -271,6 +272,7 @@ public class HomeFragmentF extends Fragment implements LocationListener{
         getLocation();
         Location();
         loading(Latitude,Longitude);
+        new news().execute();
 
         //newfeed();
         //--------------------------------------------
@@ -3259,4 +3261,61 @@ public class HomeFragmentF extends Fragment implements LocationListener{
     }
 
 
+public class news extends AsyncTask<Void, Void, Void>{
+
+    @Override
+    protected Void doInBackground(Void... params) {
+        try {
+            // Connect to the web site
+            Document mBlogDocument = Jsoup.connect(url).get();
+            // Using Elements to get the Meta data
+            Elements mElementDataSize = mBlogDocument.select("div[class=eachStory]");
+            // Locate the content attribute
+            int mElementSize = mElementDataSize.size();
+
+            for (int i = 0; i < mElementSize; i++) {
+                Elements mElementAuthorName = mBlogDocument.select("h3").select("a").eq(i);
+                String mAuthorName = mElementAuthorName.text();
+
+                Elements mElementBlogUploadDate = mBlogDocument.select("time[class=date-format]").eq(i);
+                String mBlogUploadDate = mElementBlogUploadDate.text();
+
+                Elements mElementBlogTitle = mBlogDocument.select("div[class=eachStory]").select("p").eq(i);
+                String mBlogTitle = mElementBlogTitle.text();
+                Elements mElementBlogImage = mBlogDocument.select("img[class=lazy]").eq(i);
+                // String mBlogImage = mElementBlogImage.text();
+                String mBlogImage = mElementBlogImage.attr("data-original");
+                // Download image from URL
+                String mBlogHref = mElementAuthorName.attr("href");
+                // Download image from URL
+                Log.i("p",mBlogTitle);
+                Log.i("image",mBlogImage);
+                Log.i("anchor",mBlogHref);
+                //Log.i("AuthorName",)
+
+
+                mAuthorNameList.add(mAuthorName);
+                mBlogUploadDateList.add(mBlogUploadDate);
+                mBlogTitleList.add(mBlogTitle);
+                mBlogImageList.add(mBlogImage);
+                mBlogHrefList.add(mBlogHref);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    @Override
+    protected void onPostExecute(Void result) {
+        // Set description into TextView
+
+
+
+        DataAdapter mDataAdapter = new DataAdapter(getActivity(), mBlogTitleList, mAuthorNameList, mBlogUploadDateList,mBlogImageList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mDataAdapter);
+
+    }
+}
 }

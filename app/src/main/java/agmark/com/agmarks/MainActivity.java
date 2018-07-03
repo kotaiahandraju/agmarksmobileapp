@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +82,8 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor ;
     Gson gson = new Gson();
+    ImageButton zip,loc,back;
+    TextView title;
     String json=null ,json2=null,json3=null,json4=null,json5=null;
 int count =0;
 
@@ -110,11 +113,12 @@ int count =0;
         weatherIcon = (TextView) findViewById(R.id.weather_icon);
         tabLayout=(TabLayout)findViewById(R.id.tablayout1);
         viewPager=(ViewPager)findViewById(R.id.viewpager1);
-        //recyclerView=(RecyclerView)findViewById(R.id.listView);
-       // RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 2);
-        //recyclerView.setLayoutManager(mLayoutManager);
+       zip=(ImageButton)findViewById(R.id.pincode1);
+       loc=(ImageButton)findViewById(R.id.loc);
         pincode=(EditText)findViewById(R.id.pincode);
         search =(ImageView)findViewById(R.id.search);
+        back=(ImageButton)findViewById(R.id.ib_back);
+        title=(TextView)findViewById(R.id.titles);
         pincode.setVisibility(View.INVISIBLE);
         search.setVisibility(View.INVISIBLE);
         list = new ArrayList<>();
@@ -128,9 +132,25 @@ int count =0;
         Location();
         //perfome();
         //loading(Latitude, Longitude);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
-
-
+        zip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                opeartion(1);
+            }
+        });
+        loc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                opeartion(0);
+            }
+        });
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -196,7 +216,7 @@ int count =0;
                 humidity_field.setText("Humidity: " + weather_humidity);
                 pressure_field.setText("Pressure: " + weather_pressure);
                 weatherIcon.setText(Html.fromHtml(weather_iconText));
-                getSupportActionBar().setTitle(cityField.getText());
+                title.setText(cityField.getText());
 
             }
         });
@@ -507,7 +527,7 @@ public void tabstext(List<String> lss){
 }
 public void listsize(int size){
 if(size==8){
-    editor.remove("list2");
+    //editor.remove("list2");
 }
 }
 }
