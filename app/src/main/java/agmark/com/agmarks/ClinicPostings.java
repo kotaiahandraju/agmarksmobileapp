@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,7 +46,7 @@ public class ClinicPostings extends RecyclerView.Adapter<ClinicPostings.ProductV
     TextView text1,text2,text3,text4,text5,text6,text7,text8,text9,txt_text;
     ImageView imageView;
 
-    private ArrayList<String> productList;
+    private ArrayList<String> productList,prdList;
     private ArrayList<HashMap<String, String>> dataList;
 
 
@@ -53,6 +54,7 @@ public class ClinicPostings extends RecyclerView.Adapter<ClinicPostings.ProductV
         this.mCtx = mCtx;
         this.productList = productList;
         this.dataList = dataList;
+        this.prdList=productList;
         this.tokenid= tokenid;
     }
 
@@ -66,7 +68,7 @@ public class ClinicPostings extends RecyclerView.Adapter<ClinicPostings.ProductV
 
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, final int position) {
-        holder.textViewTitle.setText(productList.get(position));
+        holder.textViewTitle.setText(prdList.get(position));
        // holder.textDate.setText(hm.get("date"));
 
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
@@ -191,9 +193,43 @@ public class ClinicPostings extends RecyclerView.Adapter<ClinicPostings.ProductV
         }catch(Exception e){e.printStackTrace();}
     }
 
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    prdList = productList;
+                } else {
+                    ArrayList<String> filteredList = new ArrayList<>();
+                    for (String row : productList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.toString().toLowerCase().contains(charString.toLowerCase()) || row.toString().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    prdList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = prdList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                prdList = (ArrayList<String>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
     @Override
     public int getItemCount() {
-        return productList.size();
+        return prdList.size();
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {

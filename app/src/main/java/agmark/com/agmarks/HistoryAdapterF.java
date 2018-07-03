@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,13 +42,14 @@ public class HistoryAdapterF extends RecyclerView.Adapter<HistoryAdapterF.Produc
     private Activity mCtx;
     FragmentTransaction transaction;
 
-    private ArrayList<String> productList;
+    private ArrayList<String> productList,prdList;
     private ArrayList<HashMap<String,String >>dataList;
     private ArrayList<ModelF1> productList1;
 
     public HistoryAdapterF(Activity mCtx, ArrayList<String> productList, ArrayList<HashMap<String, String>> dataList) {
         this.mCtx = mCtx;
         this.productList = productList;
+        this.prdList=productList;
         this.dataList=dataList;
     }
 
@@ -61,7 +63,7 @@ public class HistoryAdapterF extends RecyclerView.Adapter<HistoryAdapterF.Produc
 
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, final int position) {
-        holder.textViewTitle.setText(productList.get(position));
+        holder.textViewTitle.setText(prdList.get(position));
 
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,10 +132,44 @@ public class HistoryAdapterF extends RecyclerView.Adapter<HistoryAdapterF.Produc
         productList1.add(item5);
 
     }
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    prdList = productList;
+                } else {
+                    ArrayList<String> filteredList = new ArrayList<>();
+                    for (String row : productList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.toString().toLowerCase().contains(charString.toLowerCase()) || row.toString().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    prdList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = prdList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                prdList = (ArrayList<String>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return prdList.size();
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {

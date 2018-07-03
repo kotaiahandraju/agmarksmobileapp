@@ -104,22 +104,6 @@ public class FarmerActivity extends Fragment {
         spinnerDF = (MultiSelectSpinner) v.findViewById(R.id.spinnerDF);
         baseUrl= config.get_url();
 
-        animal=new ArrayList<>();
-        animal.add("Cow");
-        animal.add("Buffalo");
-        animal.add("Sheep");
-        animal.add("Goat");
-        animal.add("Cattle");
-        animal.add("Poultry");
-
-        dairy=new ArrayList<>();
-        dairy.add("Milk");
-        dairy.add("Curd");
-        dairy.add("Butter");
-        dairy.add("Paneer");
-        dairy.add("Ghee");
-        dairy.add("Khowa");
-
         smsVerifyCatcher  = new SmsVerifyCatcher(getActivity(), new OnSmsCatchListener<String>() {
             @Override
             public void onSmsCatch(String message) {
@@ -501,7 +485,7 @@ public class FarmerActivity extends Fragment {
                 else {
                     dialog.hide();
                     relative.setVisibility(View.VISIBLE);
-                    getrawdatafromserver();
+
 
                 }}
                     }, new Response.ErrorListener() {
@@ -536,6 +520,7 @@ public class FarmerActivity extends Fragment {
                     dialog.hide();
                     relative.setVisibility(View.VISIBLE);
                     sendDetailsToServer();
+
                 }
                 else if (response.toString().contains("Farmer")) {
                     Toast.makeText(getContext().getApplicationContext(), "Already Registered as Farmer", Toast.LENGTH_SHORT).show();
@@ -771,16 +756,17 @@ public class FarmerActivity extends Fragment {
                             alertDialog.setIcon(R.drawable.tick);
                             alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    clearBox();
+                                    Intent intent=new Intent(getActivity().getApplicationContext(),DashboardActivity.class);
+                                    startActivity(intent);
 
                                 }
                             });
                             alertDialog.show();
                             //Toast.makeText(getContext().getApplicationContext(), "Successfully Registered", Toast.LENGTH_SHORT).show();
-                            clearBox();
 
-                            Intent intent=new Intent(getActivity().getApplicationContext(),DashboardActivity.class);
-                            startActivity(intent);
-                        }
+
+                           }
                         else if (response.toString().contains("fail")){
                             AlertDialog alertDialog = new AlertDialog.Builder(
                                     getActivity()).create();
@@ -1070,8 +1056,10 @@ public class FarmerActivity extends Fragment {
                     spinnerCF.setListAdapter(adapterC).setListener(new MultiSelectSpinner.MultiSpinnerListener() {
                         @Override
                         public void onItemsSelected(boolean[] selected) {
+                            crop=new String[selected.length];
                             cropc=0;
                             for(int i=0; i<selected.length; i++) {
+
                                 if (selected[i] ) {
                                     crop[cropc] = crops.get(i);
                                     if(cropc==0)
@@ -1083,13 +1071,25 @@ public class FarmerActivity extends Fragment {
                                     //  Log.i("cropc", i + " : "+ crop[cropc-1]+crop.length+ cropc);
                                 }
                             }
+
                         }
                     }).setAllCheckedText("All Items").setAllUncheckedText("Select Crop")
                             .setSelectAll(false).setTitle(R.string.title).setMinSelectedItems(0).setMaxSelectedItems(5);
+                    spinnerCF.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            spinnerCF.setSelection(position);
+                        }
 
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
+                            spinnerCF.setSelection(0);
+                        }
+                    });
                     spinnerVF.setListAdapter(adapterV).setListener(new MultiSelectSpinner.MultiSpinnerListener() {
                         @Override
                         public void onItemsSelected(boolean[] selected) {
+                            veg=new String[selected.length];
                             vegc=0;
                             for(int i=0; i<selected.length; i++) {
                                 if(selected[i]) {
@@ -1102,7 +1102,7 @@ public class FarmerActivity extends Fragment {
                                     vegc++;
                                 }
                             }
-                            Log.i("countVeg:",""+vegc);
+
                         }
                     }).setAllCheckedText("All Items").setAllUncheckedText("Select Vegetables")
                             .setSelectAll(false).setTitle(R.string.title)
@@ -1111,7 +1111,7 @@ public class FarmerActivity extends Fragment {
                     spinnerAF.setListAdapter(adapterA).setListener(new MultiSelectSpinner.MultiSpinnerListener() {
                         @Override
                         public void onItemsSelected(boolean[] selected) {
-
+                            anim=new String[selected.length];
                             animc=0;
                             for(int i=0; i<selected.length; i++) {
                                 if(selected[i]) {
@@ -1124,6 +1124,8 @@ public class FarmerActivity extends Fragment {
                                     //Log.i("TAG", i + " : "+ selected.length+animal.get(i)+anim[i]);
                                 }
                             }
+
+
                         }
                     }).setAllCheckedText("All Items").setAllUncheckedText("Select Animal")
                             .setSelectAll(false).setTitle(R.string.title)
@@ -1132,7 +1134,7 @@ public class FarmerActivity extends Fragment {
                     spinnerDF.setListAdapter(adapterD).setListener(new MultiSelectSpinner.MultiSpinnerListener() {
                         @Override
                         public void onItemsSelected(boolean[] selected) {
-
+                            dai=new String[selected.length];
                             daic=0;
                             for(int i=0; i<selected.length; i++) {
                                 if(selected[i]) {
@@ -1145,12 +1147,15 @@ public class FarmerActivity extends Fragment {
                                     daic++;
 
                                 }
+
                             }
+
+
+
                         }
                     }).setAllCheckedText("All Items").setAllUncheckedText("Select Dairy")
                             .setSelectAll(false).setTitle(R.string.title)
                             .setMinSelectedItems(0).setMaxSelectedItems(3);
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

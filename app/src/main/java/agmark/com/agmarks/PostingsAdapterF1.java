@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,7 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
     FragmentTransaction transaction;
 
     //we are storing all the products in a list
-    private ArrayList<String> productList;
+    private ArrayList<String> productList,prdList;
     private ArrayList<HashMap<String, String>> dataList;
     private ArrayList<ModelF1> productList1;
 
@@ -53,6 +54,7 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
         this.mCtx = mCtx;
         this.productList = productList;
         this.dataList = dataList;
+        this.prdList=productList;
         this.tokenid=tokenid;
     }
 
@@ -66,7 +68,7 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
 
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, final int position) {
-        holder.textViewTitle.setText(productList.get(position));
+        holder.textViewTitle.setText(prdList.get(position));
 
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +153,7 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
             jsonBody.put("price", hm.get("price"));
             jsonBody.put("nearestMarket",hm.get("nearestmarket"));
             jsonBody.put("comment", hm.get("comment"));
-            jsonBody.put("transactionType", PostingsFragmentF.ttype1);
+            jsonBody.put("transactionType", hm.get("ttype1"));
             jsonBody.put("status", hm.get("status"));
             Log.i("clinic---", jsonBody.toString());
             final String mRequestBody = jsonBody.toString();
@@ -209,10 +211,45 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
 
     }
 
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    prdList = productList;
+                } else {
+                    ArrayList<String> filteredList = new ArrayList<>();
+                    for (String row : productList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.toString().toLowerCase().contains(charString.toLowerCase()) || row.toString().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    prdList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = prdList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                prdList = (ArrayList<String>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return prdList.size();
     }
 
 
