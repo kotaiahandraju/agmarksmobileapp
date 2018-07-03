@@ -57,7 +57,7 @@ public class PostingsFragmentF extends Fragment {
     ClinicPostings adapter2;
     SearchView searchView,searchView1,searchView2;
     PostingsAdapterF adapter;
-    public static String ttype,ttype1;
+
     TextView textView,textView1,textView2;
 
     HashMap<String, String> hm;
@@ -276,7 +276,7 @@ public class PostingsFragmentF extends Fragment {
                                 recyclerView.setVisibility(View.VISIBLE);
                                 JSONObject obj = jsonarray.getJSONObject(i);
                                 hm = new HashMap<String, String>();
-                                ttype=obj.getString("Transaction_type").toString();
+                               // ttype=obj.getString("Transaction_type").toString();
                                 String st = obj.getString("Transaction_type").toString();
                                 String st1 = st.substring(st.lastIndexOf("_") + 1);
                                 String st2="";
@@ -296,6 +296,7 @@ public class PostingsFragmentF extends Fragment {
                                 hm.put("date", obj.getString("Date").toString());
                                 hm.put("area_units", obj.getString("Area_Units").toString());
                                 hm.put("comment", obj.getString("Comment").toString());
+                                hm.put("ttype", obj.getString("Transaction_type").toString());
                                 hm.put("status", obj.getString("Status").toString());
                                 dataList.add(hm);
 
@@ -350,7 +351,7 @@ public class PostingsFragmentF extends Fragment {
                                 recyclerView1.setVisibility(View.VISIBLE);
                                 JSONObject obj = jsonarray.getJSONObject(i);
                                 hm = new HashMap<String, String>();
-                                ttype1=obj.getString("Transaction_type").toString();
+
                                 String st = obj.getString("Transaction_type").toString();
                                 String st1 = st.substring(st.lastIndexOf("_") + 1);
                                 String st2="";
@@ -370,6 +371,7 @@ public class PostingsFragmentF extends Fragment {
                                 hm.put("date", obj.getString("Date").toString());
                                 hm.put("nearestmarket", obj.getString("Nearest_market").toString());
                                 hm.put("comment", obj.getString("Comment").toString());
+                                hm.put("ttype1", obj.getString("Transaction_type").toString());
                                 hm.put("status", obj.getString("Status").toString());
                                 dataList.add(hm);
 

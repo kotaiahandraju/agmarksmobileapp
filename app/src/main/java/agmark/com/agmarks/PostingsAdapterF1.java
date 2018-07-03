@@ -153,7 +153,7 @@ public class PostingsAdapterF1 extends RecyclerView.Adapter<PostingsAdapterF1.Pr
             jsonBody.put("price", hm.get("price"));
             jsonBody.put("nearestMarket",hm.get("nearestmarket"));
             jsonBody.put("comment", hm.get("comment"));
-            jsonBody.put("transactionType", PostingsFragmentF.ttype1);
+            jsonBody.put("transactionType", hm.get("ttype1"));
             jsonBody.put("status", hm.get("status"));
             Log.i("clinic---", jsonBody.toString());
             final String mRequestBody = jsonBody.toString();

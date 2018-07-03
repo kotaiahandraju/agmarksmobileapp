@@ -353,9 +353,11 @@ public class ProfileFragmentF extends Fragment {
 
                         }*/
                         if(obj.has("crop1")){
-                            myString = obj.getString("crop1").toString().trim();
-                            int sp_position = customCrop.getPosition(myString);
-                            comm1.setSelection(sp_position);
+                            try {
+                                myString = obj.getString("crop1").toString().trim();
+                                int sp_position = customCrop.getPosition(myString);
+                                comm1.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
 
                         }
                         comm1.setEnabled(false);

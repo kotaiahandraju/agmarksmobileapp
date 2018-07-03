@@ -234,7 +234,12 @@ public class HistoryFragmentF extends Fragment {
                                     HashMap<String, String> hm = new HashMap<String, String>();
                                     String st = obj.getString("Transaction_type").toString();
                                     String st1 = st.substring(st.lastIndexOf("_") + 1);
-                                    productList.add(i, st);
+                                    String st2="";
+                                    if(st1.equalsIgnoreCase("buy"))
+                                        st2="Buy";
+                                    if(st1.equalsIgnoreCase("sell"))
+                                        st2="Sell";
+                                    productList.add(i, obj.getString("Crop_name").toString() + ": " + st2 + ",     " + obj.getString("Date").toString());
 
                                     hm.put("crop", obj.getString("Crop_name").toString());
                                     hm.put("category", obj.getString("Category").toString());
@@ -297,8 +302,13 @@ public class HistoryFragmentF extends Fragment {
                                 JSONObject obj = jsonarray.getJSONObject(i);
                                 HashMap<String, String> hm = new HashMap<String, String>();
                                 String st = obj.getString("Transaction_type").toString();
-                                String st1 = st.substring(st.lastIndexOf("Status") + 1);
-                                productList.add(i, st1);
+                                String st1 = st.substring(st.lastIndexOf("_") + 1);
+                                String st2="";
+                                if(st1.equalsIgnoreCase("buy"))
+                                    st2="Buy";
+                                if(st1.equalsIgnoreCase("sell"))
+                                    st2="Sell";
+                                productList.add(i, obj.getString("Live_stock").toString() + ": " + st2 + ",     " + obj.getString("Date").toString());
                                 hm.put("livestock", obj.getString("Live_stock").toString());
                                 hm.put("input", obj.getString("Inputs").toString());
                                 hm.put("variety", obj.getString("Variety").toString());
@@ -362,8 +372,8 @@ public class HistoryFragmentF extends Fragment {
                                 //Log.e("image", "image: " + obji.getString(obj.getString("imgName").toString()).toString());
                                 HashMap<String, String> hm = new HashMap<String, String>();
                                 String st = obj.getString("type").toString();
-                                String st1 = st.substring(st.lastIndexOf("_") + 1);
-                                productList.add(i, st);
+                                String []st1 = st.split("_");
+                                productList.add(i, st1[0]+",     "+obj.getString("strdate").toString()) ;
                                 hm.put("sno", obj.getString("SNo").toString());
                                 hm.put("comment", obj.getString("comment").toString());
                                 hm.put("status", obj.getString("status").toString());

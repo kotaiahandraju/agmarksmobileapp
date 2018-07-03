@@ -157,7 +157,7 @@ public class PostingsAdapterF extends RecyclerView.Adapter<PostingsAdapterF.Prod
             jsonBody.put("areaUnits",hm.get("area_units"));
             jsonBody.put("comment",hm.get("comment"));
             jsonBody.put("ask_price",hm.get("askPrice"));
-            jsonBody.put("transactionType",PostingsFragmentF.ttype);
+            jsonBody.put("transactionType",hm.get("ttype"));
             jsonBody.put("date",hm.get("Date"));
             jsonBody.put("status",hm.get("status"));
             Log.i("Log123---",jsonBody.toString());
