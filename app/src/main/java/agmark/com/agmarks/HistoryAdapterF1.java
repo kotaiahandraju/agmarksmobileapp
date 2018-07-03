@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ class HistoryAdapterF1 extends RecyclerView.Adapter<HistoryAdapterF1.ProductView
     FragmentTransaction transaction;
 
     //we are storing all the products in a list
-    private ArrayList<String> productList;
+    private ArrayList<String> productList,prdList;
     private ArrayList<HashMap<String, String>> dataList;
     private ArrayList<ModelF1> productList1;
 
@@ -51,6 +52,7 @@ class HistoryAdapterF1 extends RecyclerView.Adapter<HistoryAdapterF1.ProductView
     public HistoryAdapterF1(Activity mCtx, ArrayList<String> productList, ArrayList<HashMap<String, String>> dataList) {
         this.mCtx = mCtx;
         this.productList = productList;
+        this.prdList=productList;
         this.dataList = dataList;
     }
 
@@ -64,7 +66,7 @@ class HistoryAdapterF1 extends RecyclerView.Adapter<HistoryAdapterF1.ProductView
 
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, final int position) {
-        holder.textViewTitle.setText(productList.get(position));
+        holder.textViewTitle.setText(prdList.get(position));
 
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,10 +135,44 @@ class HistoryAdapterF1 extends RecyclerView.Adapter<HistoryAdapterF1.ProductView
 
     }
 
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    prdList = productList;
+                } else {
+                    ArrayList<String> filteredList = new ArrayList<>();
+                    for (String row : productList) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.toString().toLowerCase().contains(charString.toLowerCase()) || row.toString().contains(charSequence)) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    prdList = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = prdList;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                prdList = (ArrayList<String>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return prdList.size();
     }
 
 

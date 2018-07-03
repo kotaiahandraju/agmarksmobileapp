@@ -645,16 +645,14 @@ public class LogisticsActivity extends Fragment{
                             alertDialog.setIcon(R.drawable.tick);
                             alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+                                    clearBox();
 
+                                    Intent intent=new Intent(getActivity().getApplicationContext(),DashboardActivity.class);
+                                    startActivity(intent);
                                 }
                             });
                             alertDialog.show();
-                           // Toast.makeText(getContext().getApplicationContext(), "Successfully Registered", Toast.LENGTH_SHORT).show();
-                            clearBox();
 
-                            Intent intent=new Intent(getActivity().getApplicationContext(),DashboardActivity.class);
-                            startActivity(intent);  // Intent intent=new Intent(getActivity().getApplicationContext(),FarmerDashboard.class);
-                            //startActivity(intent);
                         }
                         else if (response.toString().contains("fail")){
                             AlertDialog alertDialog = new AlertDialog.Builder(

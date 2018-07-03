@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -13,7 +15,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.text.Editable;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
 import android.text.TextWatcher;
+import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +53,9 @@ public class PostingsFragmentF extends Fragment {
     RecyclerView recyclerView,recyclerView1,recyclerView2;
     Config config = new Config();
     String baseUrl,tokenid;
-    SearchView searchView;
+    PostingsAdapterF1 adapter1;
+    ClinicPostings adapter2;
+    SearchView searchView,searchView1,searchView2;
     PostingsAdapterF adapter;
     public static String ttype,ttype1;
     TextView textView,textView1,textView2;
@@ -76,8 +83,12 @@ public class PostingsFragmentF extends Fragment {
         textView2=(TextView)v.findViewById(R.id.txtNoP2);
         searchView=(SearchView)v.findViewById(R.id.inputSearch);
         SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        searchView=(SearchView)v.findViewById(R.id.inputSearch);
 
+        //EditText text = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        EditText editText = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        editText.setHint("Search");
+        editText.setTextColor(Color.WHITE);
+        editText.setHintTextColor(Color.WHITE);
         searchView.setSearchableInfo(searchManager
                 .getSearchableInfo(getActivity().getComponentName()));
         searchView.setMaxWidth(Integer.MAX_VALUE);
@@ -87,18 +98,104 @@ public class PostingsFragmentF extends Fragment {
                                               @Override
                                               public boolean onQueryTextSubmit(String query) {
                                                   // filter recycler view when query submitted
-                                                  adapter.getFilter().filter(query);
+                                                  try {
+                                                      adapter.getFilter().filter(query);
+                                                  }catch (Exception e){e.printStackTrace();}
                                                   return false;
                                               }
 
                                               @Override
                                               public boolean onQueryTextChange(String query) {
                                                   // filter recycler view when text is changed
-                                                  adapter.getFilter().filter(query);
+                                                  try {
+                                                      adapter.getFilter().filter(query);
+                                                  }catch (Exception e){e.printStackTrace();}
                                                   return false;
                                               }
                                           });
-            baseUrl = config.get_url();
+
+      /*  ImageView searchCloseIcon = (ImageView) searchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
+        View searchPlate = searchView.findViewById(android.support.v7.appcompat.R.id.search_plate);
+
+        if (searchPlate != null) {
+            searchPlate.setBackgroundResource(R.drawable.bg);
+        }
+*/
+        /*editText.setHint("Search");
+        editText.setTextColor(Color.WHITE);
+        editText.setHintTextColor(Color.WHITE);*/
+        searchView1=(SearchView)v.findViewById(R.id.inputSearch1);
+        SearchManager searchManager1 = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        //EditText text = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        EditText editText1 = (EditText) searchView1.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        editText1.setHint("Search");
+        editText1.setTextColor(Color.WHITE);
+        editText1.setHintTextColor(Color.WHITE);
+        searchView1.setSearchableInfo(searchManager1
+                .getSearchableInfo(getActivity().getComponentName()));
+        searchView1.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
+        searchView1.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                try {
+                    adapter1.getFilter().filter(query);
+                }catch (Exception e){e.printStackTrace();}
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+              //  if(adapter1.getItemCount()>0) {
+                try {
+                    adapter1.getFilter().filter(query);
+                }catch (Exception e){e.printStackTrace();}
+                //}
+               /* else
+                {
+                    Toast.makeText(getActivity().getApplicationContext(),"No Data Found",Toast.LENGTH_LONG).show();
+                }*/
+                return false;
+            }
+        });
+        searchView2=(SearchView)v.findViewById(R.id.inputSearch2);
+        SearchManager searchManager2 = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        //EditText text = (EditText) searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        EditText editText2 = (EditText) searchView2.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        editText2.setHint("Search");
+        editText2.setTextColor(Color.WHITE);
+        editText2.setHintTextColor(Color.WHITE);
+        searchView2.setSearchableInfo(searchManager2
+                .getSearchableInfo(getActivity().getComponentName()));
+        searchView2.setMaxWidth(Integer.MAX_VALUE);
+
+        // listening to search query text change
+        searchView2.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // filter recycler view when query submitted
+                try {
+                    adapter2.getFilter().filter(query);
+                }catch (Exception e){e.printStackTrace();}
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String query) {
+                // filter recycler view when text is changed
+                try {
+                    adapter2.getFilter().filter(query);
+                }catch (Exception e){e.printStackTrace();}
+                return false;
+            }
+        });
+
+        baseUrl = config.get_url();
         sharedPreferences = getActivity().getSharedPreferences("agmarks", Context.MODE_PRIVATE);
         tokenid=sharedPreferences.getString("tokenid", "");
         ImageButton ib_back = (ImageButton) v.findViewById(R.id.ib_back);
@@ -277,7 +374,7 @@ public class PostingsFragmentF extends Fragment {
                                 dataList.add(hm);
 
                             }
-                            PostingsAdapterF1 adapter1 = new PostingsAdapterF1(getActivity(), productList, dataList, tokenid);
+                           adapter1 = new PostingsAdapterF1(getActivity(), productList, dataList, tokenid);
                             recyclerView1.setAdapter(adapter1);
                         }
                         else {
@@ -344,8 +441,8 @@ public class PostingsFragmentF extends Fragment {
 
                                 dataList.add(hm);
                             }
-                            ClinicPostings adapter1 = new ClinicPostings(getActivity(), productList, dataList, tokenid);
-                            recyclerView2.setAdapter(adapter1);
+                             adapter2 = new ClinicPostings(getActivity(), productList, dataList, tokenid);
+                            recyclerView2.setAdapter(adapter2);
                         }
                         else {
                             textView2.setVisibility(View.VISIBLE);

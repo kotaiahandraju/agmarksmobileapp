@@ -63,13 +63,13 @@
 
                 <android.support.v7.widget.SearchView
                     android:id="@+id/inputSearch"
-                    android:layout_width="wrap_content"
+                    android:layout_width="140dp"
                     android:layout_height="40dp"
                     android:layout_gravity="right"
                     android:textColor="@color/white"
-                    android:layout_marginLeft="160dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="100dp"
                     android:hint="Search.."
-                    android:inputType="textVisiblePassword"
                      />
             </LinearLayout>
 
@@ -95,6 +95,10 @@
             android:layout_height="150dp"
             android:background="#fff"/>
     </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,6 +109,17 @@
         android:textStyle="bold"
         android:textColor="@color/white"
         android:text="Animal Husbandry - Dairy Products"/>
+            <android.support.v7.widget.SearchView
+                android:id="@+id/inputSearch1"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="20dp"
+                android:hint="Search.."
+                />
+            </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -127,7 +142,10 @@
             android:layout_height="150dp"
             android:background="#fff"/>
     </LinearLayout>
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -138,6 +156,17 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:text="Plant Clinic"/>
+            <android.support.v7.widget.SearchView
+                android:id="@+id/inputSearch2"
+                android:layout_width="140dp"
+                android:layout_height="40dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/white"
+                android:layout_marginLeft="140dp"
+                android:hint="Search.."
+                />
+        </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
