@@ -65,7 +65,7 @@
 
     <color name="darkTheme_colorTintedBackground">#424242</color>
 
-    <color name="blackTheme_colorPrimary">#2196F3</color>
+    <color name="blackTheme_colorPrimary">#2196f3</color>
 
     <color name="blackTheme_colorPrimaryDark">#1E88E5</color>
 
@@ -112,4 +112,7 @@
     <color name="text_dark">#000000</color>
 
     <color name="tab_indicator">#f03c42</color>
+
+  <color name="textColor">#e9000000</color>
+    <color name="weather_back">#f7f7f7</color>
 </resources>

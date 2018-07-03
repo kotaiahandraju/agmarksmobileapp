@@ -46,4 +46,7 @@ dependencies {
     compile 'com.roughike:bottom-bar:1.4.0.1'
     compile 'com.diogobernardino:williamchart:2.2'
     compile 'com.intuit.sdp:sdp-android:1.0.4'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'org.jsoup:jsoup:1.11.2'
 }

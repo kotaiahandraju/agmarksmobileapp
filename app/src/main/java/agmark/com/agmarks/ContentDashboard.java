@@ -126,6 +126,7 @@ public class ContentDashboard extends Fragment {
 //          transaction.replace(R.id.frame, new WeatherActivity().newInstance());
 //          transaction.addToBackStack(null);
 //          transaction.commit();
+          startActivity(new Intent(getActivity(),MainActivity.class));
 
       }
       else if(view==layout4){
@@ -136,9 +137,10 @@ public class ContentDashboard extends Fragment {
       }
       else if (view==layout5){
           //mFragment=new NewsFeedActivity();
-          transaction.replace(R.id.frame, new NewsFeedActivity().newInstance());
+          /*transaction.replace(R.id.frame, new NewsFeedActivity().newInstance());
           transaction.addToBackStack(null);
-          transaction.commit();
+          transaction.commit();*/
+          startActivity(new Intent(getActivity(),NewFeed.class));
       }
       else if (view==layout6){
          // mFragment=new ExpertAdviceActivity();

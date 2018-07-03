@@ -251,13 +251,13 @@ public class DashboardActivity extends AppCompatActivity
                 transaction.replace(R.id.frame, new RegistrationActivity().newInstance());
                 break;
             case R.id.nav_weather:
-                Intent intent=new Intent(getApplicationContext(),WeatherActivity.class);
+                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             case R.id.nav_marketprices:
                 transaction.replace(R.id.frame, new MarketPricesActivity().newInstance());
                 break;
             case R.id.nav_newsfeed:
-                transaction.replace(R.id.frame, new AnimalHusbandryActivity().newInstance());
+                startActivity(new Intent(getApplicationContext(),NewFeed.class));
                 break;
             case R.id.nav_expertadvice:
                 transaction.replace(R.id.frame, new DairyProductsActivity().newInstance());

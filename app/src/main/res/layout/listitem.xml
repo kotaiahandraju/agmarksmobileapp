@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="10dp"
+    android:background="@color/weather_back"
+    android:padding="2dp">
+
+    <TextView
+        android:id="@+id/updated_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/weather_icon1"
+        android:layout_marginTop="0dp"
+        android:text="welcome"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textColor"
+        android:textSize="13sp"
+        android:layout_alignParentLeft="true" />
+
+    <ImageView
+        android:id="@+id/weather_icon1"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="16dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/textColor"
+        android:textSize="50sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="35dp" />
+
+    <TextView
+        android:id="@+id/current_temperature_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/details_field1"
+        android:layout_below="@+id/weather_icon1"
+        android:text="welcome"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        android:layout_alignLeft="@+id/details_field1" />
+
+    <TextView
+        android:id="@+id/details_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/updated_field1"
+        android:layout_marginStart="22dp"
+        android:text="welcome"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textColor"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="22dp" />
+
+    <TextView
+        android:id="@+id/humidity_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/current_temperature_field1"
+        android:layout_below="@+id/pressure_field1"
+        android:text="welcome"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textColor"
+        android:layout_alignLeft="@+id/current_temperature_field1" />
+
+    <TextView
+        android:id="@+id/pressure_field1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/current_temperature_field1"
+        android:layout_below="@+id/details_field1"
+        android:text="welcome"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/textColor"
+        android:layout_alignLeft="@+id/current_temperature_field1" />
+
+</RelativeLayout>

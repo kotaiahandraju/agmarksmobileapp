@@ -1,20 +1,33 @@
 package agmark.com.agmarks;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.PaintDrawable;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.text.InputType;
 import android.util.Base64;
 import android.util.Log;
@@ -47,6 +60,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -56,14 +72,17 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+
+import agmark.com.agmarks.Weather.Function;
 
 /**
  * Created by Admin on 21-05-2018.
  */
 
-public class HomeFragmentF extends Fragment {
+public class HomeFragmentF extends Fragment implements LocationListener{
     Bitmap bitmap;
     SharedPreferences.Editor prefsEditor;
     FragmentTransaction transaction;
@@ -91,6 +110,28 @@ public class HomeFragmentF extends Fragment {
     String cropstr="",vegstr="",anistr="",daistr="";
     ArrayList<String> crop,veg,ani,dai;
     SharedPreferences sharedPreferences;
+
+    //----------------------------------------------------------
+    TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;
+
+    Typeface weatherFont;
+    LocationManager locationManager;
+    TextView Latitude1,Longitude1;
+    double lat,lon;
+    String Latitude=null,Longitude=null;
+    String latt,longg;
+
+
+    private String url = "https://economictimes.indiatimes.com/news/economy/agriculture";
+    private ArrayList<String> mAuthorNameList = new ArrayList<>();
+    private ArrayList<String> mBlogUploadDateList = new ArrayList<>();
+    private ArrayList<String> mBlogTitleList = new ArrayList<>();
+    private ArrayList<String> mBlogImageList = new ArrayList<>();
+    private ArrayList<String> mBlogHrefList = new ArrayList<>();
+
+    RecyclerView mRecyclerView;
+//------------------------------
+
     public static HomeFragmentF newInstance() {
         HomeFragmentF fragment = new HomeFragmentF();
         return fragment;
@@ -215,6 +256,27 @@ public class HomeFragmentF extends Fragment {
         btnBuyPostAni=(Button) v.findViewById(R.id.btnBuyPostAni);
         btnSellPostAni=(Button) v.findViewById(R.id.btnSellPostAni);
 
+        //---------------------------------------------
+        weatherFont = Typeface.createFromAsset(getActivity().getApplicationContext().getAssets(), "fonts/weathericons-regular-webfont.ttf");
+
+        cityField = (TextView)v.findViewById(R.id.city_field2);
+        updatedField = (TextView)v.findViewById(R.id.updated_field2);
+        detailsField = (TextView)v.findViewById(R.id.details_field2);
+        currentTemperatureField = (TextView)v.findViewById(R.id.current_temperature_field2);
+        humidity_field = (TextView)v.findViewById(R.id.humidity_field2);
+        pressure_field = (TextView)v.findViewById(R.id.pressure_field2);
+        weatherIcon = (TextView)v.findViewById(R.id.weather_icon2);
+        weatherIcon.setTypeface(weatherFont);
+
+        getLocation();
+        Location();
+        loading(Latitude,Longitude);
+
+        //newfeed();
+        //--------------------------------------------
+
+       mRecyclerView = (RecyclerView)v.findViewById(R.id.act_recyclerview1);
+
         getDetailsFromServerLog();
 
         linear1.setOnClickListener(new View.OnClickListener() {
@@ -264,7 +326,7 @@ public class HomeFragmentF extends Fragment {
                             String item = parent.getItemAtPosition(position).toString();
 
                             if(item.equals("Selected Crops")){
-                               // Toast.makeText(getActivity().getApplicationContext(), "Please Select Crops", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(getActivity().getApplicationContext(), "Please Select Crops", Toast.LENGTH_SHORT).show();
                                 btnSellCB.setBackgroundResource(R.color.red);
                                 btnStorageCB.setBackgroundResource(R.color.red);
                                 btnClinicCB.setBackgroundResource(R.color.red);
@@ -284,10 +346,10 @@ public class HomeFragmentF extends Fragment {
                                 if(2131099681==R.color.blue)
                                 {
 
-                                        txtBuyCB.setText("Buy::"+item);
-                                        txtSellCB.setText("Sell::"+item);
-                                        txtStorageCB.setText("Storage::"+item);
-                                        txtClinicCB.setText("Plant Clinic::"+item);
+                                    txtBuyCB.setText("Buy::"+item);
+                                    txtSellCB.setText("Sell::"+item);
+                                    txtStorageCB.setText("Storage::"+item);
+                                    txtClinicCB.setText("Plant Clinic::"+item);
 
 
                                 }
@@ -298,7 +360,6 @@ public class HomeFragmentF extends Fragment {
                         public void onNothingSelected(AdapterView<?> parent) {
                         }
                     });
-                    expDate.setText("");
                     expDate.setOnTouchListener(new View.OnTouchListener(){
                         @Override
                         public boolean onTouch(View v, MotionEvent event) {
@@ -345,7 +406,7 @@ public class HomeFragmentF extends Fragment {
                                     }, mYear, mMonth, mDay);
                             datePickerDialog.setTitle("Please select date");
                             // TODO Hide Future Date Here
-                           // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+                            // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
                             datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
 
                             datePickerDialog.show();
@@ -366,7 +427,7 @@ public class HomeFragmentF extends Fragment {
                             linearAnimSell.setVisibility(View.GONE);
                             linearDairyBuy.setVisibility(View.GONE);
                             linearDairySell.setVisibility(View.GONE);
-                            select="crop";
+
                             linearCropSell.setVisibility(View.GONE);
                             linearCropStorage.setVisibility(View.GONE);
                             linearCropClinic.setVisibility(View.GONE);
@@ -407,7 +468,6 @@ public class HomeFragmentF extends Fragment {
                                             Toast.makeText(getActivity().getApplicationContext(), "Invalid  Details", Toast.LENGTH_SHORT).show();
                                         }
 
-
                                     }
                                 });
                             }
@@ -423,7 +483,7 @@ public class HomeFragmentF extends Fragment {
                             linearAnimSell.setVisibility(View.GONE);
                             linearDairyBuy.setVisibility(View.GONE);
                             linearDairySell.setVisibility(View.GONE);
-                            select="crop";
+
                             btnSellCB.setBackgroundResource(R.color.blue);
                             linearCropBuy.setVisibility(View.GONE);
                             linearCropStorage.setVisibility(View.GONE);
@@ -532,7 +592,7 @@ public class HomeFragmentF extends Fragment {
                                 });
                             }
 
-                                }
+                        }
                     });
 
 
@@ -612,62 +672,6 @@ public class HomeFragmentF extends Fragment {
                         public void onNothingSelected(AdapterView<?> parent) {
                         }
                     });
-                    expDate.setText("");
-                    expDate.setOnTouchListener(new View.OnTouchListener(){
-                        @Override
-                        public boolean onTouch(View v, MotionEvent event) {
-                            int inType = expDate.getInputType(); // backup the input type
-                            expDate.setInputType(InputType.TYPE_NULL); // disable soft input
-                            expDate.onTouchEvent(event); // call native handler
-                            expDate.setInputType(inType); // restore input type
-                            expDate.requestFocus();
-                            return true; // consume touch even
-                        }
-                    });
-                    expDate.setOnLongClickListener(new View.OnLongClickListener()
-                    {
-                        public boolean onLongClick(View v) {
-                            int inType = expDate.getInputType(); // backup the input type
-                            expDate.setInputType(InputType.TYPE_NULL); // disable soft input
-                            //  dobf.onTouchEvent(event); // call native handler
-                            expDate.setInputType(inType); // restore input type
-                            expDate.requestFocus();
-                            return true; // consume touch even
-                        }
-                    });
-                    expDate.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            // calender class's instance and get current date , month and year from calender
-                            final Calendar c = Calendar.getInstance();
-                            int mYear = c.get(Calendar.YEAR); // current year
-                            int mMonth = c.get(Calendar.MONTH); // current month
-                            int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                            // date picker dialog
-                            datePickerDialog = new DatePickerDialog(getActivity(),
-                                    new DatePickerDialog.OnDateSetListener() {
-
-                                        @Override
-                                        public void onDateSet(DatePicker view, int year,
-                                                              int monthOfYear, int dayOfMonth) {
-                                            String month=getMonthFullName(monthOfYear);
-                                            String date_pick_res = dayOfMonth + "-" + month + "-" + year;
-                                            // set day of month , month and year value in the edit text
-                                            expDate.setText(date_pick_res);
-
-                                        }
-                                    }, mYear, mMonth, mDay);
-                            datePickerDialog.setTitle("Please select date");
-                            // TODO Hide Future Date Here
-                            // datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-                            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
-
-                            datePickerDialog.show();
-
-                        }
-                    });
-
-
                     getDetailsFromServer();
 
                     btnBuyCB.setOnClickListener(new View.OnClickListener() {
@@ -684,7 +688,7 @@ public class HomeFragmentF extends Fragment {
                             linearAnimSell.setVisibility(View.GONE);
                             linearDairyBuy.setVisibility(View.GONE);
                             linearDairySell.setVisibility(View.GONE);
-                            select="vegetable";
+
                             if(!spCropV.getSelectedItem().toString().trim().equals("Selected Vegetables")) {
                                 linearCropBuy.setVisibility(View.VISIBLE);
                                 txtBuyCB.setText("Buy::" + spCropV.getSelectedItem().toString());
@@ -743,7 +747,6 @@ public class HomeFragmentF extends Fragment {
                             linearCropSell.setVisibility(View.GONE);
                             linearCropStorage.setVisibility(View.GONE);
                             linearCropClinic.setVisibility(View.GONE);
-                            select="vegetable";
                             if(!spCropV.getSelectedItem().toString().trim().equals("Selected Vegetables")) {
                                 linearCropSell.setVisibility(View.VISIBLE);
                                 txtSellCB.setText("Sell::" + spCropV.getSelectedItem().toString());
@@ -892,7 +895,7 @@ public class HomeFragmentF extends Fragment {
                     //iscolora = false;
                     linearCrops.setVisibility(View.VISIBLE);
                     spCropA.setAdapter(customSpinnerAdapterA);
-  spCropA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    spCropA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                         @Override
                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id)
                         {
@@ -912,7 +915,7 @@ public class HomeFragmentF extends Fragment {
                                 linearDairyBuy.setVisibility(View.GONE);
                                 linearDairySell.setVisibility(View.GONE);
 
-                               linearCropBuy.setVisibility(View.GONE);
+                                linearCropBuy.setVisibility(View.GONE);
                                 linearCropSell.setVisibility(View.GONE);
                                 linearCropStorage.setVisibility(View.GONE);
                                 linearCropClinic.setVisibility(View.GONE);
@@ -1649,6 +1652,8 @@ public class HomeFragmentF extends Fragment {
         }catch(JSONException e){}
     }
 
+
+
     public class CustomAdapterStore extends BaseAdapter {
 
         private LayoutInflater inflater=null;
@@ -1679,24 +1684,22 @@ public class HomeFragmentF extends Fragment {
             if(convertView==null){
                 convertView = inflater.inflate(R.layout.crop_store, null);
             }
-            try {
-                double dis = Double.parseDouble(hm.get("distance"));
-                if (dis < 20) {
-                    final HashMap<String, String> hm = alData1.get(position);
-                    TextView txtName = (TextView) convertView.findViewById(R.id.txtName);
-                    txtName.setText(hm.get("cname"));
-                    TextView txtAddress = (TextView) convertView.findViewById(R.id.txtAddress);
-                    txtAddress.setText(hm.get("address"));
-                    TextView txtContact = (TextView) convertView.findViewById(R.id.txtContact);
-                    txtContact.setText(hm.get("mobile"));
-                    TextView txtCapacity = (TextView) convertView.findViewById(R.id.txtCapacity);
-                    txtCapacity.setText(hm.get("scapacity"));
-                    TextView txtSUnit = (TextView) convertView.findViewById(R.id.txtSUnit);
-                    txtSUnit.setText("");
-                    TextView txtDistance = (TextView) convertView.findViewById(R.id.txtDistance);
-                    txtDistance.setText(hm.get("distance"));
-                }
-            }catch (Exception e){e.printStackTrace();}
+            double dis=Double.parseDouble(hm.get("distance"));
+            if(dis<20) {
+                final HashMap<String, String> hm = alData1.get(position);
+                TextView txtName = (TextView) convertView.findViewById(R.id.txtName);
+                txtName.setText(hm.get("cname"));
+                TextView txtAddress = (TextView) convertView.findViewById(R.id.txtAddress);
+                txtAddress.setText(hm.get("address"));
+                TextView txtContact = (TextView) convertView.findViewById(R.id.txtContact);
+                txtContact.setText(hm.get("mobile"));
+                TextView txtCapacity = (TextView) convertView.findViewById(R.id.txtCapacity);
+                txtCapacity.setText(hm.get("scapacity"));
+                TextView txtSUnit = (TextView) convertView.findViewById(R.id.txtSUnit);
+                txtSUnit.setText("");
+                TextView txtDistance = (TextView) convertView.findViewById(R.id.txtDistance);
+                txtDistance.setText(hm.get("distance"));
+            }
             return convertView;
 
         }
@@ -1734,15 +1737,15 @@ public class HomeFragmentF extends Fragment {
                             hm.put("unit", obj.getString("Unit_of_price"));
                             hm.put("max", obj.getString("Max_price"));
                             hm.put("modal", obj.getString("Modal_price"));
-                           // if (!json.isNull("comment"))
+                            // if (!json.isNull("comment"))
                             hm.put("date", obj.getString("Date"));
 
-                           // else
-                           //     hm.put("comment", "");
+                            // else
+                            //     hm.put("comment", "");
                             hm.put("id", obj.getString("Id"));
                             mCategoryLists.add(hm);
                         }
-                       // int totalHeight = 0;
+                        // int totalHeight = 0;
                         CustomAdapterCrop ca=new CustomAdapterCrop(mCategoryLists);
                        /* for (int i = 0; i < ca.getCount(); i++) {
                             View listItem = ca.getView(i, null, listview);
@@ -1855,7 +1858,7 @@ public class HomeFragmentF extends Fragment {
                             hm.put("market", obj.getString("Market"));
                             hm.put("veg", obj.getString("Vegetables"));
                             hm.put("local", obj.getString("Local_rate"));
-                           // hm.put("unit", obj.getString("Unit_of_price"));
+                            // hm.put("unit", obj.getString("Unit_of_price"));
                             hm.put("date", obj.getString("Date"));
                             hm.put("id", obj.getString("Id"));
                             mCategoryListsveg.add(hm);
@@ -2065,7 +2068,7 @@ public class HomeFragmentF extends Fragment {
 
                             if(item.equals("Select Category")){
                                 com.add(0,"Select Input");
-                               // Toast.makeText(getActivity().getApplicationContext(), "Please Select Category", Toast.LENGTH_SHORT).show();
+                                // Toast.makeText(getActivity().getApplicationContext(), "Please Select Category", Toast.LENGTH_SHORT).show();
                             }
                             else
                             {
@@ -2295,7 +2298,7 @@ public class HomeFragmentF extends Fragment {
                         category.add(obj.getString("Product_name"));
 
                     }
-                   // Set<String> uniqueList;
+                    // Set<String> uniqueList;
                     //uniqueList= new HashSet<String>(category);
                     //category.clear();
 
@@ -2326,20 +2329,18 @@ public class HomeFragmentF extends Fragment {
 
     private void sendDetailsToServerCB() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String ttype="",cropB="";
+        String ttype="";
         if(select.equals("crop"))
         {
             ttype="crop_status_buy";
-            cropB=spCrop.getSelectedItem().toString().trim();
         }
-            else if(select.equals("vegetable"))
+        else if(select.equals("vegetable"))
         {
             ttype="vegetable_status_buy";
-            cropB=spCropV.getSelectedItem().toString().trim();
         }
 
         Map<String, String> postParam= new HashMap<String, String>();
-        postParam.put("cropName",cropB );
+        postParam.put("cropName", spCropV.getSelectedItem().toString());
         postParam.put("tokenId", tokenid);
         postParam.put("category", spCategCB.getSelectedItem().toString());
         postParam.put("input", spInputCB.getSelectedItem().toString());
@@ -2358,7 +2359,7 @@ public class HomeFragmentF extends Fragment {
             @Override
             public void onResponse(final JSONObject response) {
 
-                        Log.i("Response is:-",response.toString());
+                Log.i("Response is:-",response.toString());
                 try {
                     JSONObject json = new JSONObject(response.toString());
                     if(json.getString("status").equalsIgnoreCase("success")) {
@@ -2373,10 +2374,10 @@ public class HomeFragmentF extends Fragment {
                             }
                         });
                         alertDialog.show();
-                       // Toast.makeText(getContext(), "Your Post Successfully  Send", Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getContext(), "Your Post Successfully  Send", Toast.LENGTH_LONG).show();
                         clearBoxCB();
                     }
-                     } catch (JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
@@ -2570,16 +2571,14 @@ public class HomeFragmentF extends Fragment {
 
     private void sendDetailsToServerCS() {
         RequestQueue queue = Volley.newRequestQueue(getContext());
-        String ttype="",cropB="";
+        String ttype="";
         if(select.equals("crop"))
-                {
+        {
             ttype="crop_status_sell";
-                    cropB=spCrop.getSelectedItem().toString().trim();
         }
         else if(select.equals("vegetable"))
         {
             ttype="vegetable_status_sell";
-            cropB=spCropV.getSelectedItem().toString().trim();
         }
 
         Map<String, String> postParam= new HashMap<String, String>();
@@ -2587,7 +2586,7 @@ public class HomeFragmentF extends Fragment {
         postParam.put("input", "None");
         postParam.put("area", "None");
         postParam.put("areaUnits", "None");
-        postParam.put("cropName", cropB);
+        postParam.put("cropName", spCropV.getSelectedItem().toString());
         postParam.put("tokenId", tokenid);
         postParam.put("quantity", txtQuantityCS.getText().toString().trim());
         postParam.put("units", spBunchesCS.getSelectedItem().toString());
@@ -2653,9 +2652,9 @@ public class HomeFragmentF extends Fragment {
             ttype = spCrop.getSelectedItem().toString() + "_" + "Status_Clinic";
         }
 
-else if(select.equalsIgnoreCase("veg")) {
-    ttype = spCropV.getSelectedItem().toString() + "_" + "Status_Clinic";
-}
+        else if(select.equalsIgnoreCase("veg")) {
+            ttype = spCropV.getSelectedItem().toString() + "_" + "Status_Clinic";
+        }
         else if(select.equalsIgnoreCase("ani")) {
             ttype = spCropA.getSelectedItem().toString() + "_" + "Status_Clinic";
         }
@@ -2756,14 +2755,14 @@ else if(select.equalsIgnoreCase("veg")) {
 
     }
 
-   private void clearBoxDaiSell()
-   {
-                txtAskpriceDaiSell.setText("");
-                quantityDaiSell.setText("");
-                txtNMarDaiSell.setText("");
-                txtCommentDaisell.setText("");
-                spCategDaiSell.setSelection(0);
-                spBunchesDaiSell.setSelection(0);
+    private void clearBoxDaiSell()
+    {
+        txtAskpriceDaiSell.setText("");
+        quantityDaiSell.setText("");
+        txtNMarDaiSell.setText("");
+        txtCommentDaisell.setText("");
+        spCategDaiSell.setSelection(0);
+        spBunchesDaiSell.setSelection(0);
     }
     private void clearBoxAniSell()
     {
@@ -2915,7 +2914,7 @@ else if(select.equalsIgnoreCase("veg")) {
             try {
                 Uri uri = data.getData();
                 try {
-                     bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
+                    bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), uri);
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     bitmap.compress(Bitmap.CompressFormat.JPEG, 65, stream);
                     img_store = stream.toByteArray();
@@ -2940,7 +2939,7 @@ else if(select.equalsIgnoreCase("veg")) {
                 new JSONObject(postParam), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(final JSONObject response) {
-            //    Toast.makeText(getActivity().getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
+                //    Toast.makeText(getActivity().getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
 
                 if (response.toString().contains("success") && response.toString().contains("Farmer")) {
                     try {
@@ -2997,8 +2996,8 @@ else if(select.equalsIgnoreCase("veg")) {
                                 crop.add(w);
                             }
 
-                          //  select="crop";
-                             customSpinnerAdapter = new CustomSpinnerAdapter(getActivity(), crop);
+                            select="crop";
+                            customSpinnerAdapter = new CustomSpinnerAdapter(getActivity(), crop);
                             spCrop.setAdapter(customSpinnerAdapter);
                             Log.i("crop data:--", cropstr);
 
@@ -3023,8 +3022,8 @@ else if(select.equalsIgnoreCase("veg")) {
                                 veg.add(w);
                             }
 
-                           // select="vegetable";
-                             customSpinnerAdapterV = new CustomSpinnerAdapter(getActivity(), veg);
+                            select="vegetable";
+                            customSpinnerAdapterV = new CustomSpinnerAdapter(getActivity(), veg);
                             spCropV.setAdapter(customSpinnerAdapterV);
 
                             for(int i=1;i<4;i++)
@@ -3051,7 +3050,7 @@ else if(select.equalsIgnoreCase("veg")) {
                             }
 
                             //select="animal";
-                             customSpinnerAdapterA = new CustomSpinnerAdapter(getActivity(), ani);
+                            customSpinnerAdapterA = new CustomSpinnerAdapter(getActivity(), ani);
 
                             spCropA.setAdapter(customSpinnerAdapterA);
                             for(int i=1;i<4;i++)
@@ -3123,5 +3122,126 @@ else if(select.equalsIgnoreCase("veg")) {
 
         return monthName;
     }
+    private void loading(String l1,String l2) {
+        Function.placeIdTask asyncTask =new Function.placeIdTask(new Function.AsyncResponse() {
+            public void processFinish(String weather_city, String weather_description, String weather_temperature, String weather_humidity, String weather_pressure, String weather_updatedOn, String weather_iconText, String sun_rise) {
+
+                cityField.setText(weather_city);
+                updatedField.setText(weather_updatedOn);
+                detailsField.setText(weather_description);
+                currentTemperatureField.setText(weather_temperature);
+                humidity_field.setText("Humidity: "+weather_humidity);
+                pressure_field.setText("Pressure: "+weather_pressure);
+                weatherIcon.setText(Html.fromHtml(weather_iconText));
+
+            }
+        });
+        //asyncTask.execute("16.4227", "80.5768"); //  asyncTask.execute("Latitude", "Longitude")
+        asyncTask.execute(""+l1,""+l2);
+    }
+
+    private void Location() {
+        if(ContextCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(getActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},101);
+        }
+    }
+    void getLocation(){
+        try{
+            locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,500,5,this);
+
+        }catch (SecurityException e){
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onLocationChanged(Location location){
+        // locationText.setText("latitude:"+location.getLatitude()+"\n Longitude:"+location.getLongitude());
+        lat=location.getLatitude();
+        lon=location.getLongitude();
+        latt=Double.toString(lat);
+        longg =Double.toString(lon);
+        //Latitude1.setText(latt.substring(0,8));
+        //Longitude1.setText(longg.substring(0,8));
+        //loading(Latitude1.getText().toString(),Longitude1.getText().toString());
+        loading(latt.substring(0,8),longg.substring(0,8));
+
+        //Toast.makeText(getApplicationContext(),""+Latitude+" "+Longitude,Toast.LENGTH_SHORT).show();
+        try{
+            Geocoder geocoder = new Geocoder(getActivity(), Locale.getDefault());
+            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+            // locationText.setText(locationText.getText()+"\n"+addresses.get(0).getAddressLine(0)+","+addresses.get(0).getAddressLine(1)+","+addresses.get(0).getAddressLine(2));
+
+        }catch(Exception e){
+
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+        Toast.makeText(getActivity().getApplicationContext(),"Please enable gps and Internet",Toast.LENGTH_SHORT).show();
+
+    }
+
+    public void newfeed(){
+        try {
+            // Connect to the web site
+            Document mBlogDocument = Jsoup.connect(url).get();
+            // Using Elements to get the Meta data
+            Elements mElementDataSize = mBlogDocument.select("div[class=eachStory]");
+            // Locate the content attribute
+            int mElementSize = mElementDataSize.size();
+
+            for (int i = 0; i < mElementSize; i++) {
+                Elements mElementAuthorName = mBlogDocument.select("h3").select("a").eq(i);
+                String mAuthorName = mElementAuthorName.text();
+
+                Elements mElementBlogUploadDate = mBlogDocument.select("time[class=date-format]").eq(i);
+                String mBlogUploadDate = mElementBlogUploadDate.text();
+
+                Elements mElementBlogTitle = mBlogDocument.select("div[class=eachStory]").select("p").eq(i);
+                String mBlogTitle = mElementBlogTitle.text();
+                Elements mElementBlogImage = mBlogDocument.select("img[class=lazy]").eq(i);
+                // String mBlogImage = mElementBlogImage.text();
+                String mBlogImage = mElementBlogImage.attr("data-original");
+                // Download image from URL
+                String mBlogHref = mElementAuthorName.attr("href");
+                // Download image from URL
+                Log.i("p",mBlogTitle);
+                Log.i("image",mBlogImage);
+                Log.i("anchor",mBlogHref);
+                //Log.i("AuthorName",)
+
+
+                mAuthorNameList.add(mAuthorName);
+                mBlogUploadDateList.add(mBlogUploadDate);
+                mBlogTitleList.add(mBlogTitle);
+                mBlogImageList.add(mBlogImage);
+                mBlogHrefList.add(mBlogHref);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        DataAdapter mDataAdapter = new DataAdapter(getActivity(), mBlogTitleList, mAuthorNameList, mBlogUploadDateList,mBlogImageList);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setAdapter(mDataAdapter);
+        //mDataAdapter.setOnItemClickListener(getActivity());
+
+
+    }
+
 
 }

@@ -1,16 +1,146 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="agmark.com.agmarks.MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/blue"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:padding="2dp">
+
+        <EditText
+            android:id="@+id/pincode"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/edit_shape"
+            android:hint=" pincode"
+            android:inputType="number" />
+
+        <ImageView
+            android:id="@+id/search"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:layout_alignEnd="@+id/pincode"
+            android:layout_alignTop="@+id/pincode"
+            android:background="@drawable/btn"
+            android:src="@drawable/ic_search_black_24dp"
+            android:layout_alignRight="@+id/pincode" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weather"
+            android:textColor="@color/textColor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/city_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/weather_icon"
+            android:layout_centerHorizontal="true"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/textColor" />
+
+        <TextView
+            android:id="@+id/updated_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/city_field"
+            android:layout_below="@+id/city_field"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:textSize="13sp"
+            android:layout_alignLeft="@+id/city_field" />
+
+        <TextView
+            android:id="@+id/weather_icon"
+            android:layout_width="153dp"
+            android:layout_height="114dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="42dp"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/textColor"
+            android:textSize="50sp"
+            android:layout_alignParentLeft="true" />
+
+        <TextView
+            android:id="@+id/current_temperature_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/pressure_field"
+            android:layout_alignParentEnd="true"
+
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/textColor"
+            android:textSize="50sp"
+            android:layout_alignParentRight="true" />
+
+        <TextView
+            android:id="@+id/details_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/weather_icon"
+            android:layout_below="@+id/weather_icon"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:layout_alignLeft="@+id/weather_icon" />
+
+        <TextView
+            android:id="@+id/humidity_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/weather_icon"
+            android:layout_below="@+id/details_field"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:layout_alignLeft="@+id/weather_icon" />
+
+        <TextView
+            android:id="@+id/pressure_field"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/weather_icon"
+            android:layout_below="@+id/humidity_field"
+
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/textColor"
+            android:layout_alignLeft="@+id/weather_icon" />
+
+    </RelativeLayout>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tablayout1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!djnnborngoaernhfoa
-ifhiufhnoiefjvnioe foinehoehuhnoiajnoirhvoisghodk"
-        />
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/blackTheme_colorPrimary"
+        app:tabTextColor="@color/textColor">
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        >
+
+    </android.support.v4.view.ViewPager>
+</LinearLayout>
+
