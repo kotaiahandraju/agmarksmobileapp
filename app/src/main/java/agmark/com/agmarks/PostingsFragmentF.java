@@ -1,5 +1,6 @@
 package agmark.com.agmarks;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -46,7 +48,7 @@ public class PostingsFragmentF extends Fragment {
     RecyclerView recyclerView,recyclerView1,recyclerView2;
     Config config = new Config();
     String baseUrl,tokenid;
-    EditText inputSearch;
+    SearchView searchView;
     PostingsAdapterF adapter;
     public static String ttype,ttype1;
     TextView textView,textView1,textView2;
@@ -72,28 +74,31 @@ public class PostingsFragmentF extends Fragment {
         textView=(TextView)v.findViewById(R.id.txtNoP0);
         textView1=(TextView)v.findViewById(R.id.txtNoP1);
         textView2=(TextView)v.findViewById(R.id.txtNoP2);
-        inputSearch=(EditText)v.findViewById(R.id.inputSearch);
-        inputSearch.addTextChangedListener(new TextWatcher() {
+        searchView=(SearchView)v.findViewById(R.id.inputSearch);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        searchView=(SearchView)v.findViewById(R.id.inputSearch);
 
-            @Override
-            public void onTextChanged(CharSequence cs, int arg1, int arg2, int arg3) {
-                // When user changed the Text
-                adapter.getFilter().filter(cs);
-            }
+        searchView.setSearchableInfo(searchManager
+                .getSearchableInfo(getActivity().getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
 
-            @Override
-            public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
-                                          int arg3) {
-                // TODO Auto-generated method stub
+        // listening to search query text change
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                                              @Override
+                                              public boolean onQueryTextSubmit(String query) {
+                                                  // filter recycler view when query submitted
+                                                  adapter.getFilter().filter(query);
+                                                  return false;
+                                              }
 
-            }
-
-            @Override
-            public void afterTextChanged(Editable arg0) {
-                // TODO Auto-generated method stub
-            }
-        });
-        baseUrl = config.get_url();
+                                              @Override
+                                              public boolean onQueryTextChange(String query) {
+                                                  // filter recycler view when text is changed
+                                                  adapter.getFilter().filter(query);
+                                                  return false;
+                                              }
+                                          });
+            baseUrl = config.get_url();
         sharedPreferences = getActivity().getSharedPreferences("agmarks", Context.MODE_PRIVATE);
         tokenid=sharedPreferences.getString("tokenid", "");
         ImageButton ib_back = (ImageButton) v.findViewById(R.id.ib_back);
@@ -198,7 +203,7 @@ public class PostingsFragmentF extends Fragment {
                                 dataList.add(hm);
 
                             }
-                            PostingsAdapterF adapter = new PostingsAdapterF(getActivity(), productList, dataList, tokenid);
+                            adapter = new PostingsAdapterF(getActivity(), productList, dataList, tokenid);
 
                             recyclerView.setAdapter(adapter);
                         }

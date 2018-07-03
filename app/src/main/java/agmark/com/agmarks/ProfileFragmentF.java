@@ -56,7 +56,7 @@ public class ProfileFragmentF extends Fragment {
     Spinner anim1, anim2, anim3;
     Spinner dair1, dair2, dair3;
     Button editA, saveA;
-    String myString,str,croptype,vegtype,animtype,dairytype;
+    String myString,str,croptype,vegtype,animtype,dairytype,ccode;
     CustomSpinnerAdapter customCrop,customAnimal,customVegetable,customDairy;
     SharedPreferences sharedPreferences;
     ArrayList<String> crops1;
@@ -340,6 +340,7 @@ public class ProfileFragmentF extends Fragment {
                             district.setEnabled(false);
                             state.setText(obj.getString("state"));
                             state.setEnabled(false);
+                            ccode=obj.getString("ccode");
                       /*  if(obj.has("crop1")){
                             for(int i=0;i<jsonarray.length();i++) {
                                 myString = obj.getString("crop1").toString().trim();
@@ -601,7 +602,7 @@ public class ProfileFragmentF extends Fragment {
         postParam.put("firstName", name.getText().toString());
         postParam.put("lastName", surname.getText().toString());
         postParam.put("dob", dob.getText().toString());
-        postParam.put("ccode","+91");
+        postParam.put("ccode",ccode);
         postParam.put("mobile", contact.getText().toString());
         postParam.put("aadhar",aadhar.getText().toString());
         postParam.put("pincode",pincode.getText().toString());

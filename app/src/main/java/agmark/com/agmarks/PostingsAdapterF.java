@@ -71,7 +71,7 @@ public class PostingsAdapterF extends RecyclerView.Adapter<PostingsAdapterF.Prod
 
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, final int position) {
-        holder.textViewTitle.setText(productList.get(position));
+        holder.textViewTitle.setText(prdList.get(position));
 
         holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,7 +253,7 @@ public class PostingsAdapterF extends RecyclerView.Adapter<PostingsAdapterF.Prod
 
     @Override
     public int getItemCount() {
-        return productList.size();
+        return prdList.size();
     }
 
 

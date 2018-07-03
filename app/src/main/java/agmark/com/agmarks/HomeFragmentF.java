@@ -396,10 +396,14 @@ public class HomeFragmentF extends Fragment {
                                             areaCB.setError("Area is required!");
                                             areaCB.setHint("please enter Area");
                                         }
+                                        if (expDate.getText().toString().trim().equals("")) {
+                                            expDate.setError("Expected Date is required!");
+                                            expDate.setHint("please enter Expected Date");
+                                        }
                                         if (!isspinnerUnit(spAcresCB)) {
 
                                         }
-                                        if ((quantityCB.length() > 0) && (areaCB.length() > 0) && ((!spCategCB.getSelectedItem().toString().equals("Select Category")) && ((!spInputCB.getSelectedItem().toString().equals("Select Input")))) && ((!spBunchesCB.getSelectedItem().toString().equals("Unit"))) && ((!spAcresCB.getSelectedItem().toString().equals("Unit")))) {
+                                        if ((quantityCB.length() > 0) && (areaCB.length() > 0) && ((!spCategCB.getSelectedItem().toString().equals("Select Category")) && ((!spInputCB.getSelectedItem().toString().equals("Select Input")))) && ((!spBunchesCB.getSelectedItem().toString().equals("Unit"))) && (expDate.length()>0) && ((!spAcresCB.getSelectedItem().toString().equals("Unit")))) {
 
                                             // Toast.makeText(getActivity().getApplicationContext(), "valid  Details", Toast.LENGTH_SHORT).show();
                                             sendDetailsToServerCB();
@@ -711,10 +715,14 @@ public class HomeFragmentF extends Fragment {
                                             areaCB.setError("Area is required!");
                                             areaCB.setHint("please enter Area");
                                         }
+                                        if (expDate.getText().toString().trim().equals("")) {
+                                            expDate.setError("Expected Date is required!");
+                                            expDate.setHint("please enter Expected Date");
+                                        }
                                         if (!isspinnerUnit(spAcresCB)) {
 
                                         }
-                                        if ((quantityCB.length() > 0) && (areaCB.length() > 0) && ((!spCategCB.getSelectedItem().toString().equals("Select Category")) && ((!spInputCB.getSelectedItem().toString().equals("Select Input")))) && ((!spBunchesCB.getSelectedItem().toString().equals("Unit"))) && ((!spAcresCB.getSelectedItem().toString().equals("Unit")))) {
+                                        if ((quantityCB.length() > 0) && (areaCB.length() > 0) && ((!spCategCB.getSelectedItem().toString().equals("Select Category")) && ((!spInputCB.getSelectedItem().toString().equals("Select Input")))) && ((!spBunchesCB.getSelectedItem().toString().equals("Unit"))) && (expDate.length()>0) && ((!spAcresCB.getSelectedItem().toString().equals("Unit")))) {
 
                                             // Toast.makeText(getActivity().getApplicationContext(), "valid  Details", Toast.LENGTH_SHORT).show();
                                             sendDetailsToServerCB();
@@ -1026,7 +1034,11 @@ public class HomeFragmentF extends Fragment {
                                             txtPriceAni.setError("Area is required!");
                                             txtPriceAni.setHint("please enter Area");
                                         }
-                                        if ((quantityAni.length() > 0) && (txtPriceAni.length() > 0) && ((!spCategAni.getSelectedItem().toString().equals("Select Animal")) && ((!spInputAni.getSelectedItem().toString().equals("Select Type of Breed")))) ) {
+                                        if (expDateAnim.getText().toString().trim().equals("")) {
+                                            expDateAnim.setError("Expected Date is required!");
+                                            expDateAnim.setHint("please enter Expected Date");
+                                        }
+                                        if ((quantityAni.length() > 0) && (txtPriceAni.length() > 0) && ((!spCategAni.getSelectedItem().toString().equals("Select Animal")) && (expDateAnim.length()>0) && ((!spInputAni.getSelectedItem().toString().equals("Select Type of Breed")))) ) {
 
                                             // Toast.makeText(getActivity().getApplicationContext(), "valid  Details", Toast.LENGTH_SHORT).show();
                                             sendDetailsToServerAni();
@@ -1345,8 +1357,11 @@ public class HomeFragmentF extends Fragment {
                                             txtAskpriceDai.setError("Ask Price is required!");
                                             txtAskpriceDai.setHint("please enter Ask Price");
                                         }
-
-                                        if ((quantityDai.length() > 0) && (txtAskpriceDai.length() > 0) && ((!spCategDai.getSelectedItem().toString().equals("Select Dairy")) &&((!spBunchesDai.getSelectedItem().toString().equals("Unit"))) )) {
+                                        if (expDateDairy.getText().toString().trim().equals("")) {
+                                            expDateDairy.setError("Expected Date is required!");
+                                            expDateDairy.setHint("please enter Expected Date");
+                                        }
+                                        if ((quantityDai.length() > 0) && (txtAskpriceDai.length() > 0) && ((!spCategDai.getSelectedItem().toString().equals("Select Dairy")) && (expDateDairy.length()>0) &&((!spBunchesDai.getSelectedItem().toString().equals("Unit"))) )) {
 
                                             // Toast.makeText(getActivity().getApplicationContext(), "valid  Details", Toast.LENGTH_SHORT).show();
                                             sendDetailsToServerDai();
