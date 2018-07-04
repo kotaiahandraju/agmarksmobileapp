@@ -41,8 +41,8 @@
         <activity
             android:name=".FarmerDashboard"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".NewFeed"></activity>
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".NewFeed" android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".web"/>
     </application>
 

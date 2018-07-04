@@ -9,7 +9,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.AdapterView;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,11 +32,19 @@ public class NewFeed extends AppCompatActivity implements DataAdapter.OnItemClic
     private ArrayList<String> mBlogTitleList = new ArrayList<>();
     private ArrayList<String> mBlogImageList = new ArrayList<>();
     private ArrayList<String> mBlogHrefList = new ArrayList<>();
+    TextView back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_feed);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         new Description().execute();
 
     }
