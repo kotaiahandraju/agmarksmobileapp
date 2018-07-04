@@ -88,12 +88,12 @@ public class LoginPageActivity extends Fragment {
             public void onClick(View view) {
                 String uname = user.getText().toString();
                 if (!isUName(uname)) {
-                    user.setError("Name should not be empty.");
+                    user.setError("Invalid Number.");
                     return;
                 }
                 String pwd = pswd.getText().toString();
                 if (!isPWD(pwd)) {
-                    pswd.setError("Password should not be empty.");
+                    pswd.setError("Invalid Password.");
                     return;
                 }
                 if (uname != null && pwd != null) {
@@ -160,14 +160,14 @@ public class LoginPageActivity extends Fragment {
     }
 
     private boolean isUName(String uname) {
-        if (uname != null && uname.length() > 0) {
+        if (uname != null && uname.length() ==10) {
             return true;
         }
         return false;
     }
 
     private boolean isPWD(String pwd) {
-        if (pwd != null && pwd.length() > 0) {
+        if (pwd != null && pwd.length() == 4) {
             return true;
         }
         return false;
@@ -299,7 +299,7 @@ public class LoginPageActivity extends Fragment {
                 try {
                     JSONObject json = new JSONObject(response.toString());
                     if(json.getString("status").equalsIgnoreCase("success")) {
-                        Toast.makeText(getContext(), "Your Pin has Successfully Send", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Your pin is successfully sent to mobile number", Toast.LENGTH_SHORT).show();
                         dialog.hide();
                         Intent intent=new Intent(getActivity().getApplicationContext(),DashboardActivity.class);
                         startActivity(intent);

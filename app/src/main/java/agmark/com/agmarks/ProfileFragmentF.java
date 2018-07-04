@@ -362,40 +362,53 @@ public class ProfileFragmentF extends Fragment {
                         }
                         comm1.setEnabled(false);
                         if(obj.has("crop2")){
-                              myString = obj.getString("crop2").toString().trim();
-                            int sp_position = customCrop.getPosition(myString);
-                            comm2.setSelection(sp_position);
+                            try {
+                                myString = obj.getString("crop2").toString().trim();
+                                int sp_position = customCrop.getPosition(myString);
+                                comm2.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
 
                         }
                         comm2.setEnabled(false);
-                        if(obj.has("crop3")){
-                              myString = obj.getString("crop3").toString().trim();
+
+                        if(obj.has("crop3")) {
+                            try{
+                            myString = obj.getString("crop3").toString().trim();
                             int sp_position = customCrop.getPosition(myString);
                             comm3.setSelection(sp_position);
+                        }catch (Exception e){e.printStackTrace();}
                         }
                         comm3.setEnabled(false);
                         if(obj.has("crop4")){
+                            try{
                               myString = obj.getString("crop4").toString().trim();
                             int sp_position = customCrop.getPosition(myString);
                             comm4.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
                         }
                         comm4.setEnabled(false);
                         if(obj.has("crop5")){
+                            try{
                              myString = obj.getString("crop5").toString().trim();
                             int sp_position = customCrop.getPosition(myString);
                             comm5.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
                         }
                         comm5.setEnabled(false);
                         if(obj.has("veg1")){
+                            try{
                              myString = obj.getString("veg1").toString().trim();
                             int sp_position = customVegetable.getPosition(myString);
                             vege1.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
                         }
                         vege1.setEnabled(false);
                         if(obj.has("veg2")){
+                            try{
                             myString = obj.getString("veg2").toString().trim();
                             int sp_position = customVegetable.getPosition(myString);
                             vege2.setSelection(sp_position);
+                            }catch (Exception e){e.printStackTrace();}
                         }
                         vege2.setEnabled(false);
                         if(obj.has("veg3")){
@@ -471,7 +484,7 @@ public class ProfileFragmentF extends Fragment {
                         }
                         dair3.setEnabled(false);
 
-                    } catch (JSONException e) {
+                    } catch (Exception e) {e.printStackTrace();
                     }
                 }
             }, new Response.ErrorListener() {

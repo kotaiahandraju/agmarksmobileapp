@@ -113,7 +113,7 @@ public class FarmerDashboard extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-        Intent intent = new Intent(FarmerDashboard.this, DashboardActivity.class);
+       Intent intent = new Intent(FarmerDashboard.this, DashboardActivity.class);
         startActivity(intent);
     }
 
